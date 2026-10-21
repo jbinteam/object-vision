@@ -1,0 +1,5 @@
+path: "/home/jb/codex/projects/objectSegmentation/output/l515_dataset/versions/20260923T060602_397058Z"
+train: train.txt
+val: val.txt
+names:
+  0: emergency_stop

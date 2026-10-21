@@ -1,0 +1,132 @@
+{
+  "input": "Read-only saved L515 RGB-D/masks; current Phase4 config. Not Gemini/live throughput.",
+  "threads": 2,
+  "cloud": [
+    {
+      "sample": "1790323285174229542",
+      "raw_points": 1428,
+      "filtered_points": 331,
+      "baseline_ms": 1.6757015,
+      "candidate_ms": 1.399823,
+      "exact_output": true
+    },
+    {
+      "sample": "1790323342561229603",
+      "raw_points": 13311,
+      "filtered_points": 1814,
+      "baseline_ms": 14.1036815,
+      "candidate_ms": 10.9950165,
+      "exact_output": true
+    },
+    {
+      "sample": "1790323393340889858",
+      "raw_points": 11190,
+      "filtered_points": 1742,
+      "baseline_ms": 12.2687035,
+      "candidate_ms": 9.829117,
+      "exact_output": true
+    },
+    {
+      "sample": "1790323438010381086",
+      "raw_points": 10304,
+      "filtered_points": 1399,
+      "baseline_ms": 10.7618145,
+      "candidate_ms": 8.2966055,
+      "exact_output": true
+    },
+    {
+      "sample": "1790323484556109531",
+      "raw_points": 13706,
+      "filtered_points": 2084,
+      "baseline_ms": 14.8975425,
+      "candidate_ms": 11.703999,
+      "exact_output": true
+    },
+    {
+      "sample": "1790323526623567852",
+      "raw_points": 2168,
+      "filtered_points": 508,
+      "baseline_ms": 2.580706,
+      "candidate_ms": 2.1440125,
+      "exact_output": true
+    },
+    {
+      "sample": "1790323570028993260",
+      "raw_points": 9460,
+      "filtered_points": 1959,
+      "baseline_ms": 11.6371085,
+      "candidate_ms": 9.3652385,
+      "exact_output": true
+    },
+    {
+      "sample": "1790323609326788630",
+      "raw_points": 9814,
+      "filtered_points": 1330,
+      "baseline_ms": 10.5377795,
+      "candidate_ms": 8.217785,
+      "exact_output": true
+    }
+  ],
+  "gicp": {
+    "stable_visibility": {
+      "attempts": 30,
+      "baseline_ms": {
+        "median": 2.4593475,
+        "p95": 3.010351499999999
+      },
+      "candidate_ms": {
+        "median": 1.0958525,
+        "p95": 1.3080639999999997
+      },
+      "pose_max_delta": [
+        5.679675868799537e-14,
+        8.726257121830662e-13
+      ],
+      "agreements": 30,
+      "source_cache_hits": 29,
+      "source_cache_misses": 1
+    },
+    "changing_recorded_views": {
+      "attempts": 32,
+      "baseline_ms": {
+        "median": 4.569461,
+        "p95": 5.2469411
+      },
+      "candidate_ms": {
+        "median": 4.621033,
+        "p95": 5.59765625
+      },
+      "pose_max_delta": [
+        5.679675868799537e-14,
+        8.725502278650785e-13
+      ],
+      "agreements": 32,
+      "source_cache_hits": 1,
+      "source_cache_misses": 31
+    }
+  },
+  "profile": "         10864 function calls (10841 primitive calls) in 0.103 seconds\n\n   Ordered by: cumulative time\n   List reduced from 90 to 14 due to restriction <14>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n       24    0.084    0.004    0.084    0.004 {built-in method open3d.cuda.pybind.pipelines.registration.registration_generalized_icp}\n       48    0.001    0.000    0.006    0.000 /home/jb/codex/projects/objectScanner/ros2_ws/src/object_pose_tracking/object_pose_tracking/registration.py:53(is_rigid)\n      144    0.001    0.000    0.004    0.000 /usr/lib/python3/dist-packages/numpy/core/numeric.py:2249(isclose)\n       96    0.000    0.000    0.003    0.000 /usr/lib/python3/dist-packages/numpy/core/numeric.py:2170(allclose)\n       24    0.002    0.000    0.003    0.000 /home/jb/codex/projects/objectScanner/ros2_ws/src/object_pose_tracking/object_pose_tracking/gicp.py:88(filter)\n      144    0.001    0.000    0.002    0.000 /usr/lib/python3/dist-packages/numpy/core/numeric.py:2330(within_tol)\n       24    0.000    0.000    0.002    0.000 /home/jb/codex/projects/objectScanner/ros2_ws/src/object_pose_tracking/object_pose_tracking/registration.py:65(usable_geometry)\n       21    0.000    0.000    0.001    0.000 /usr/lib/python3/dist-packages/numpy/lib/arraysetops.py:138(unique)\n       21    0.000    0.000    0.001    0.000 /usr/lib/python3/dist-packages/numpy/lib/arraysetops.py:323(_unique1d)\n      384    0.000    0.000    0.001    0.000 /usr/lib/python3/dist-packages/numpy/core/fromnumeric.py:2421(all)\n      384    0.000    0.000    0.001    0.000 /usr/lib/python3/dist-packages/numpy/core/fromnumeric.py:71(_wrapreduction)\n       21    0.001    0.000    0.001    0.000 {method 'sort' of 'numpy.ndarray' objects}\n      504    0.001    0.000    0.001    0.000 {method 'reduce' of 'numpy.ufunc' objects}\n       48    0.000    0.000    0.001    0.000 /home/jb/codex/projects/objectScanner/ros2_ws/src/object_pose_tracking/object_pose_tracking/gicp.py:124(_cloud)\n\n\n",
+  "configuration": {
+    "cloud": {
+      "minimum_depth": 0.15,
+      "maximum_depth": 1.5,
+      "voxel_size": 0.003,
+      "outlier_neighbors": 20,
+      "outlier_std_ratio": 2.0,
+      "minimum_points": 30
+    },
+    "gicp": {
+      "enabled_levels": [
+        "fine"
+      ],
+      "voxel_size": 0.002,
+      "maximum_correspondence_distance": 0.008,
+      "maximum_iterations": 1,
+      "transformation_epsilon": 1e-06,
+      "visibility_filter_enabled": true,
+      "visibility_normal_facing": true,
+      "tracking_fine_only": true
+    }
+  },
+  "note": "Discarded source-normal cache prototype: exact same visible source/voxelization; KNN20 normals use native Open3D covariance construction. Stable repeated view and changing recorded views are separate scenarios. Timing windows differ from the final preprocessing report; do not sum stage medians as end-to-end latency."
+}

@@ -1,0 +1,7 @@
+# Python 3.12, system-site-packages venv for ROS2 Jazzy. Install CPU torch first.
+numpy==1.26.4
+opencv-python==4.10.0.84
+ultralytics==8.3.253
+torch==2.11.0+cpu
+torchvision==0.26.0+cpu
+open3d-cpu==0.19.0

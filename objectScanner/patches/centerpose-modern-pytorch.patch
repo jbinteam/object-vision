@@ -1,0 +1,107 @@
+diff --git a/src/lib/models/networks/DCNv2/dcn_v2.py b/src/lib/models/networks/DCNv2/dcn_v2.py
+index 982bef5..c0f383b 100644
+--- a/src/lib/models/networks/DCNv2/dcn_v2.py
++++ b/src/lib/models/networks/DCNv2/dcn_v2.py
+@@ -10,7 +10,13 @@ from torch.autograd import Function
+ from torch.nn.modules.utils import _pair
+ from torch.autograd.function import once_differentiable
+ 
+-import _ext as _backend
++# The released extension targets PyTorch 1.1 and cannot be built against the
++# modern PyTorch used by current NVIDIA GPUs. CenterPose only uses the modulated
++# deformable convolution below (not DCNv2 pooling), so route it through the
++# equivalent maintained torchvision operator.
++from torchvision.ops import deform_conv2d as _torchvision_deform_conv2d
++
++_backend = None
+ 
+ 
+ class _DCNv2(Function):
+@@ -85,13 +91,16 @@ class DCNv2(nn.Module):
+             offset.shape[1]
+         assert self.deformable_groups * self.kernel_size[0] * self.kernel_size[1] == \
+             mask.shape[1]
+-        return dcn_v2_conv(input, offset, mask,
+-                           self.weight,
+-                           self.bias,
+-                           self.stride,
+-                           self.padding,
+-                           self.dilation,
+-                           self.deformable_groups)
++        return _torchvision_deform_conv2d(
++            input=input,
++            offset=offset,
++            weight=self.weight,
++            bias=self.bias,
++            stride=self.stride,
++            padding=self.padding,
++            dilation=self.dilation,
++            mask=mask,
++        )
+ 
+ 
+ class DCN(DCNv2):
+@@ -120,12 +129,7 @@ class DCN(DCNv2):
+         o1, o2, mask = torch.chunk(out, 3, dim=1)
+         offset = torch.cat((o1, o2), dim=1)
+         mask = torch.sigmoid(mask)
+-        return dcn_v2_conv(input, offset, mask,
+-                           self.weight, self.bias,
+-                           self.stride,
+-                           self.padding,
+-                           self.dilation,
+-                           self.deformable_groups)
++        return super(DCN, self).forward(input, offset, mask)
+ 
+ 
+ 
+diff --git a/src/lib/utils/tracker.py b/src/lib/utils/tracker.py
+index 49fd3d6..fd9972d 100644
+--- a/src/lib/utils/tracker.py
++++ b/src/lib/utils/tracker.py
+@@ -3,7 +3,7 @@
+ # Full text can be found in LICENSE.md
+ 
+ import numpy as np
+-from sklearn.utils.linear_assignment_ import linear_assignment
++from scipy.optimize import linear_sum_assignment
+ from numba import jit
+ import copy
+ from filterpy.kalman import KalmanFilter
+@@ -11,6 +11,11 @@ from filterpy.common import Q_discrete_white_noise
+ from lib.utils.pnp.cuboid_pnp_shell import pnp_shell
+ 
+ 
++def linear_assignment(cost_matrix):
++    rows, columns = linear_sum_assignment(cost_matrix)
++    return np.column_stack((rows, columns))
++
++
+ class Tracker(object):
+     def __init__(self, opt):
+         self.opt = opt
+diff --git a/src/lib/utils/tracker_baseline.py b/src/lib/utils/tracker_baseline.py
+index bc1e074..259094f 100644
+--- a/src/lib/utils/tracker_baseline.py
++++ b/src/lib/utils/tracker_baseline.py
+@@ -3,7 +3,7 @@
+ # Full text can be found in LICENSE.md
+ 
+ import numpy as np
+-from sklearn.utils.linear_assignment_ import linear_assignment
++from scipy.optimize import linear_sum_assignment
+ from numba import jit
+ import copy
+ from filterpy.kalman import KalmanFilter
+@@ -11,6 +11,11 @@ from filterpy.common import Q_discrete_white_noise
+ from lib.utils.pnp.cuboid_pnp_shell import pnp_shell
+ 
+ 
++def linear_assignment(cost_matrix):
++    rows, columns = linear_sum_assignment(cost_matrix)
++    return np.column_stack((rows, columns))
++
++
+ class Tracker_baseline(object):
+     def __init__(self, opt):
+         self.opt = opt

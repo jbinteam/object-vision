@@ -1,0 +1,8 @@
+ObjectScanner L515
+
+Reconstruction and object isolation routines in reconstruction.py are adapted
+from examples/applications/object_scanner_gpu.py in the user-supplied
+/home/jb/projects/orbbec/pyorbbecsdk reference (Orbbec pyorbbecsdk project).
+The reference is distributed under the Apache License 2.0; see LICENSE.
+Camera acquisition, application interface and project support files are adapted
+or written for the RealSense L515. This project does not require the Orbbec SDK.

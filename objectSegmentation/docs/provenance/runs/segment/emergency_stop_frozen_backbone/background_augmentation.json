@@ -1,0 +1,6 @@
+{
+  "background_dir": "/home/jb/codex/projects/objectSegmentation/backgrounds/picsum",
+  "probability": 0.85,
+  "applies_to": "training only; validation uses original photos",
+  "implementation": "/home/jb/codex/projects/objectSegmentation/background_augmentation.py"
+}

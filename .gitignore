@@ -1,0 +1,46 @@
+# Local environments, caches and credentials
+.venv*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+node_modules/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+
+# Downloaded/trained binary artifacts
+*.pt
+*.pth
+*.onnx
+*.engine
+*.safetensors
+*.bag
+
+# Original workstation payloads (selected metadata is explicitly tracked)
+/objectScanner/datasets/
+/objectScanner/training/
+/objectScanner/weights/
+/objectScanner/references/
+/objectScanner/output/
+/objectScanner/tmp/
+/objectScanner/Log/
+/objectScanner/scripts/collect_process/Log/
+/objectScanner/ros2_ws/build*/
+/objectScanner/ros2_ws/install*/
+/objectScanner/ros2_ws/log*/
+/objectScanner/isaac_ros_ws/isaac_ros_assets/
+/objectSegmentation/input/
+/objectSegmentation/output/
+/objectSegmentation/models/
+/objectSegmentation/backgrounds/
+/objectSegmentation/runs/
+/CenterPose/
+
+# Local assistant logs and histories; agent role definitions may be tracked.
+**/.codex/handoffs/
+**/.codex/*.log
+**/.codex/ultralytics/

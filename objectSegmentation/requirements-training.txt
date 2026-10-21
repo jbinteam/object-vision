@@ -1,0 +1,2 @@
+# Pin the trainer API used by the custom on-the-fly background dataset.
+ultralytics==8.3.253

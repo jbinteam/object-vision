@@ -1,0 +1,2 @@
+# Optional legacy L515 backend. Do not upgrade without revalidating L515 support.
+pyrealsense2==2.54.2.5684

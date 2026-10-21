@@ -1,0 +1,17 @@
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+# Tested on Python 3.12 with an NVIDIA RTX 4070 Laptop GPU.
+torch==2.8.0
+torchvision==0.23.0
+numpy==1.26.4
+scipy==1.13.1
+opencv-python-headless==4.10.0.84
+albumentations==1.4.24
+scikit-learn==1.5.2
+progress==1.6.1
+pyrr==0.10.3
+simplejson==4.1.2
+filterpy==1.4.5
+tensorboard==2.21.0
+matplotlib==3.11.2
+numba==0.67.0

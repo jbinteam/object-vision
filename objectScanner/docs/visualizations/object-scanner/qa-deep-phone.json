@@ -1,0 +1,44 @@
+[
+  [
+    "scroll",
+    "[data-deep-id=\"dataset-03\"]"
+  ],
+  [
+    "wait",
+    200
+  ],
+  [
+    "click",
+    "[data-deep-id=\"dataset-03\"]"
+  ],
+  [
+    "wait",
+    300
+  ],
+  [
+    "eval",
+    "(() => {if(document.documentElement.scrollWidth>innerWidth)throw Error('phone horizontal overflow');const p=document.querySelector('.lesson:not([hidden])');if(p.id!=='dataset-03')throw Error('phone selection');return 'phone lesson and layout: passed';})()"
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/deep-phone.png",
+    ".deep-reader",
+    1
+  ],
+  [
+    "scroll",
+    "#deep-next"
+  ],
+  [
+    "wait",
+    200
+  ],
+  [
+    "click",
+    "#deep-next"
+  ],
+  [
+    "eval",
+    "(() => {if(location.hash!=='#dataset-04')throw Error('phone next step');return 'phone next: passed';})()"
+  ]
+]

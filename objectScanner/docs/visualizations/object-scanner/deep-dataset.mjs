@@ -1,0 +1,207 @@
+// Verified against the collection wrappers and their implementations.
+// Numeric examples are illustrative unless explicitly described as saved metadata.
+export const datasetDeepDive = [
+  {
+    id: 'dataset-01',
+    summary: 'Four temporary setup tags define a metric box. A fixed permanent-tag map recovers that box across camera views after setup-tag removal. Its center, axes and eight corner identities define the common frame for labels and measured points.',
+    mechanism: [
+      { title: 'Detect two tag populations', text: 'Estimate each tag pose from its known square size and image corners. The collection wrapper uses tagStandard41h12, setup IDs 1–4 at 14 mm and permanent IDs 5–10 at 28 mm. Wrong physical sizes directly corrupt metric scale.' },
+      { title: 'Resolve the setup roles', text: 'Find the raised tag using height above the table. Of the remaining three, choose the origin whose two neighbor vectors are closest to perpendicular. Swap X and Y when needed so their cross product points toward the raised tag; numeric IDs do not prescribe placement roles.' },
+      { title: 'Construct a rigid box', text: 'Normalize the first base edge, remove its component from the second edge, and form Z by their cross product. Edge lengths and top height define dimensions. Place the object origin half a width, length and height from the resolved base origin.' },
+      { title: 'Freeze the table relationship', text: 'Use the first visible permanent tag as the table frame. Store all visible permanent-tag transforms and T_table_object. A later camera view solves the mapped board pose and composes it with this fixed object transform.' },
+      { title: 'Persist the contract', text: 'Save calibration.json with dimensions, revision, tag sizes, resolved roles and box_center. Additional permanent tags can be mapped while two existing tags remain visible. Reconfiguring the box changes its revision and relabels existing captures through the preserved table frame.' },
+    ],
+    math: { label: 'One frame across views', expression: 'T_camera_object = T_camera_table × T_table_object', explanation: 'The first transform changes with camera viewpoint; the second is fixed by calibration. Object points map to camera coordinates as P_camera = T_camera_object × P_object, with translations in metres.' },
+    settings: [
+      { name: 'Tag pose error', value: '≤ 2.5 px', note: 'Calibration helper default for individual tag and combined board reprojection error; this is a pixel agreement gate, not a measured physical accuracy.' },
+      { name: 'Permanent board support', value: 'At least 2 visible tags', note: 'Required to set the box and estimate the mapped board pose.' },
+      { name: 'Box dimensions', value: '> 0.01 m and ≤ 2 m each', note: 'Geometry sanity limits in resolve_box_geometry.' },
+    ],
+    checks: [
+      'Confirm the printed tag family, black-square physical size and the configured sizes agree.',
+      'Keep permanent tags and the object fixed relative to one another throughout collection.',
+      'Inspect the projected box from several views before accepting the calibration; pixel reprojection alone cannot prove the desired object boundary.',
+    ],
+    failures: [
+      { symptom: 'The box is consistently the wrong metric size.', cause: 'A tag size or physical placement disagrees with calibration assumptions.' },
+      { symptom: 'Setup roles cannot be resolved.', cause: 'Base tags are nearly collinear, too close, or do not form three rectangular corners; the top tag lacks clear elevation.' },
+    ],
+    example: { input: 'Illustrative dimensions: 0.10 × 0.08 × 0.06 m.', process: 'Halve each dimension and preserve the fixed XYZ sign order.', output: 'Corner 0 is (−0.05, −0.04, −0.03) m; corner 7 is (+0.05, +0.04, +0.03) m in box_center.' },
+    sources: [
+      { label: 'Collection tag configuration', path: 'scripts/collect_process/01_capture.sh', lines: '5-19' },
+      { label: 'Role resolution and box construction', path: 'turntable_dataset.py', lines: '125-240' },
+      { label: 'Canonical corner order and pose labels', path: 'turntable_dataset.py', lines: '302-365' },
+    ],
+  },
+  {
+    id: 'dataset-02',
+    summary: 'Each manual capture saves raw RGB, a tag-inpainted training image, aligned depth and a geometric label. Mapped tags determine its pose. The operator chooses useful viewpoints; the script does not measure coverage or automatically reject blur.',
+    mechanism: [
+      { title: 'Read one calibrated RGB-D observation', text: 'Request color and depth from the chosen backend using collection depth limits. Save current intrinsics and image dimensions so projection and depth backprojection share camera geometry.' },
+      { title: 'Recover the current box pose', text: 'Detect permanent tags and solve their combined board pose from the fixed map. At least two mapped tags must be visible, and their board reprojection error must pass. Compose T_camera_object and project the canonical box center and eight corners.' },
+      { title: 'Gate the manual capture', text: 'Space or the Capture button requests a save. The request is refused if no valid label exists, any temporary setup tag is still detected, or a timestamp filename already exists. A partly clipped box is recorded with a flag; an entirely invalid clipped box cannot produce a label.' },
+      { title: 'Save raw and model images', text: 'Keep raw_images for audit. Inpaint permanent tag regions into images for learning, reducing a visible fiducial shortcut. Save depth without annotation graphics; zero means invalid and each integer unit is 0.001 m.' },
+      { title: 'Write geometry and indexing', text: 'The JSON carries timestamp, camera_color_optical_frame, box_center, calibration revision, metric pose, intrinsics and projected corners. Export the corresponding CenterPose sample, then append image/depth/label paths to samples.jsonl. An export failure is reported after the raw audit files have been saved.' },
+    ],
+    math: { label: 'Project the calibrated box', expression: 'P_camera = R × P_object + t; u = fx × X/Z + cx; v = fy × Y/Z + cy', explanation: 'The same saved rotation, translation and intrinsics generate every 2D corner. These are virtual box vertices, including vertices hidden behind the object surface.' },
+    settings: [
+      { name: 'Capture depth range', value: '0.25–1.5 m', note: 'Current capture CLI defaults; the live tracking configuration uses a separate minimum and must not be substituted here.' },
+      { name: 'Per-view tag reprojection', value: '≤ 3.0 px', note: 'make_label/board_pose default for saved observations.' },
+      { name: 'Depth storage', value: '0.001 m/unit; invalid = 0', note: 'Saved depth PNG metadata declares alignment to the rectified color image.' },
+    ],
+    checks: [
+      'Remove all four temporary tags before saving and verify the box overlay stays attached to the object.',
+      'Inspect raw depth, silhouette, exposure and focus across viewpoints; valid tag reprojection does not guarantee usable object depth.',
+      'Verify every saved image has matching depth and label files; review reported CenterPose export failures before downstream processing.',
+    ],
+    failures: [
+      { symptom: 'Capture stays disabled or is refused.', cause: 'Too few mapped permanent tags, excessive reprojection error, missing calibration or a detected setup tag.' },
+      { symptom: 'Labels look plausible while the object drifts inside the box.', cause: 'The object or permanent-tag arrangement moved relative to the frozen table-to-object transform.' },
+    ],
+    example: { input: 'Illustrative point: camera coordinates (0.02, −0.01, 0.50) m; fx = fy = 600, cx = 320, cy = 240.', process: 'Apply pinhole projection and encode 0.50 m depth with the stored metric scale.', output: 'The projection is (344, 228) px; a valid depth sample of 500 represents 0.500 m.' },
+    sources: [
+      { label: 'Capture defaults', path: 'scripts/capture_turntable_dataset.py', lines: '71-98' },
+      { label: 'Per-view pose and projection', path: 'turntable_dataset.py', lines: '302-365' },
+      { label: 'Manual gates and saved fields', path: 'scripts/capture_turntable_dataset.py', lines: '558-605' },
+    ],
+  },
+  {
+    id: 'dataset-03',
+    summary: 'BiRefNet proposes foreground; geometry and image heuristics isolate the rigid object. The resulting mask supports segmentation, background replacement and fusion. Previews support human review, but numerical warning gates do not record human approval.',
+    mechanism: [
+      { title: 'Infer with object context', text: 'Read the inpainted RGB image and its pose label. Expand the projected box bounding rectangle by 60% of its larger dimension, clip to the image and run the local pretrained BiRefNet at 1024 × 1024. Restore probabilities to original image coordinates.' },
+      { title: 'Try a bounded threshold ladder', text: 'Threshold foreground probabilities at 0.5, then lower in 0.1 steps toward 0.2 if refinement fails to produce a usable component. If crop inference cannot produce a result, retry full-frame inference. Lower thresholds recover weak foreground; they do not establish mask correctness.' },
+      { title: 'Constrain and disconnect', text: 'Restrict candidates to the projected 2D bounding rectangle plus 3% padding, with a two-pixel minimum. Subtract changed regions detected between raw and inpainted images. A bright-neutral HSV heuristic also breaks connections through pale paper and surfaces.' },
+      { title: 'Choose the object component', text: 'Apply an 11-pixel elliptical morphological opening to break thin connections such as cables. Prefer the connected component containing the projected object center; otherwise use the largest. Fill its largest external contour, then subtract the inpaint exclusion again so excluded tag pixels are not filled back in.' },
+      { title: 'Review evidence before export', text: 'Write raw_masks, refined masks, previews and contact sheets. Inspect silhouettes, concavities and thin structures. Warnings abort the staged build by default; --allow-warnings permits them and requires closer review.' },
+    ],
+    math: { label: 'Thresholded foreground', expression: 'M_raw(u,v) = 1 if probability(u,v) ≥ τ, else 0', explanation: 'This is only the initial binary mask. Spatial constraints, exclusion, opening and component selection further modify it. A probability above threshold is a model score, not a calibrated accuracy guarantee.' },
+    settings: [
+      { name: 'Threshold ladder', value: '0.5 → 0.2 in steps of 0.1', note: 'Defaults stop at the first nonempty usable refinement; they do not optimize a ground-truth score.' },
+      { name: 'Opening kernel', value: '11 × 11 elliptical', note: 'Pixel-scale heuristic that can remove real narrow object details.' },
+      { name: 'Warning gates', value: 'inside bbox ≥ 0.95; bbox IoU ≥ 0.2; center inside', note: 'These compare foreground and projected box extents; they are not measured segmentation IoU against human labels.' },
+      { name: 'Materialized augmentations', value: '0 per image', note: 'Current mask CLI default; training consumes masks for later on-the-fly compositing.' },
+    ],
+    checks: [
+      'Inspect every preview for missing object parts, retained table regions and erased pale material.',
+      'Check crop/full-frame fallback and chosen threshold in the mask manifest metrics.',
+      'Treat filled holes and disconnected fragments as explicit review items before the polygon export gate.',
+    ],
+    failures: [
+      { symptom: 'Thin or white object regions disappear.', cause: 'The opening kernel or bright-neutral disconnect heuristic removes real foreground.' },
+      { symptom: 'A cable or table patch survives.', cause: 'It remains connected to the selected center component or occupies the largest surviving component.' },
+    ],
+    example: { input: 'Illustrative center component has probabilities near 0.35 and vanishes at thresholds 0.5 and 0.4.', process: 'Retry at 0.3, apply the spatial/exclusion/opening operations and select a surviving component.', output: 'A mask may now be produced with threshold 0.3 recorded, but still requires visual review.' },
+    sources: [
+      { label: 'BiRefNet inference and crop', path: 'scripts/augment_centerpose_backgrounds.py', lines: '98-156' },
+      { label: 'Refinement and validation', path: 'scripts/augment_centerpose_backgrounds.py', lines: '177-336' },
+      { label: 'Outputs and warning gate', path: 'scripts/augment_centerpose_backgrounds.py', lines: '410-431' },
+      { label: 'Mask command defaults', path: 'scripts/augment_centerpose_backgrounds.py', lines: '503-521' },
+    ],
+  },
+  {
+    id: 'dataset-04',
+    summary: 'Segmentation receives a reviewed silhouette contour; pose receives eight canonical projected box corners. Both use the same images, masks and split membership. These labels describe visible foreground and a virtual 3D box, respectively.',
+    mechanism: [
+      { title: 'Plan source-grouped splits', text: 'Use an existing split manifest when available. Otherwise select 12.5% of source views for validation with seed 317. Materialized variants of a held-out source stay out of training; default export uses original images only.' },
+      { title: 'Convert the reviewed silhouette', text: 'Find external contours, discard small components and simplify with a perimeter-relative tolerance. Require exactly one surviving object polygon. Rasterize it back to a mask and reject excessive disagreement, exposing lost holes or disconnected regions instead of silently accepting a poor representation.' },
+      { title: 'Verify the corner contract', text: 'Read all eight finite corner projections in immutable XYZ sign order. When intrinsics and T_camera_object are available, recompute the canonical box projection and require agreement within 0.0001 px. All samples must use the same box dimensions.' },
+      { title: 'Normalize without inventing observations', text: 'Normalize polygon coordinates, the mask-derived object bounding box and in-image keypoints by image dimensions. Encode an off-image corner as (0, 0, 0); do not clamp it to a border. In-image visibility 2 means its projection exists, including a physically occluded virtual corner.' },
+      { title: 'Preserve pairing into training', text: 'Write matching task images, labels, masks, combined annotations and YAML files with kpt_shape [8, 3]. Background compositing later replaces only pixels outside the mask, preserving foreground positions. Disable whole-image horizontal flips because mirroring does not preserve the corner identity contract.' },
+    ],
+    math: { label: 'Polygon fidelity gate', expression: 'IoU = area(M_mask ∩ M_polygon) / area(M_mask ∪ M_polygon)', explanation: 'The default acceptance floor is 0.98. This checks loss introduced by polygon conversion; it does not tell whether the reviewed source mask itself is correct.' },
+    settings: [
+      { name: 'Contour export', value: 'minimum area 100 px²; epsilon 0.001 × perimeter', note: 'CLI defaults; exactly one exterior polygon must survive.' },
+      { name: 'Validation grouping', value: '12.5% of source views; seed 317', note: 'Fallback CLI policy, overridden by an existing split manifest. Views can still share an acquisition session.' },
+      { name: 'Keypoint identity', value: '8 ordered corners; fliplr = 0', note: 'Order follows −−−, +−−, −+−, ++−, −−+, +−+, −++, +++; training explicitly disables horizontal flips.' },
+    ],
+    checks: [
+      'Confirm both task trees contain identical image stems and split counts.',
+      'Review rejected multi-component masks and polygon/mask IoU failures rather than weakening the gate without inspection.',
+      'Use separate acquisition conditions for a stronger generalization test; source grouping alone does not remove nearby-view similarity.',
+    ],
+    failures: [
+      { symptom: 'Polygon export stops with two components or low IoU.', cause: 'Disconnected foreground, retained clutter or meaningful mask holes cannot fit the required one-exterior-polygon representation.' },
+      { symptom: 'Pose labels pass file checks but semantics are wrong.', cause: 'Corner IDs were reordered or mirrored, or an incompatible calibration revision was mixed into the dataset.' },
+    ],
+    example: { input: 'Illustrative 640 × 480 frame with one corner at (320, 240) px and another at (650, 200) px.', process: 'Normalize only in-image projections and preserve their IDs.', output: 'The first corner is (0.5, 0.5, 2); the off-image corner is (0, 0, 0), never a fabricated border point.' },
+    sources: [
+      { label: 'Visibility semantics and normalization', path: 'scripts/generate_yolo_seg_pose_dataset.py', lines: '136-151' },
+      { label: 'Source grouping and split selection', path: 'scripts/generate_yolo_seg_pose_dataset.py', lines: '208-294' },
+      { label: 'Polygon and projection checks', path: 'scripts/generate_yolo_seg_pose_dataset.py', lines: '389-438' },
+      { label: 'Export CLI defaults', path: 'scripts/generate_yolo_seg_pose_dataset.py', lines: '557-580' },
+      { label: 'Training augmentation policy', path: 'scripts/train_yolo_seg_pose.py', lines: '55-83' },
+    ],
+  },
+  {
+    id: 'dataset-05',
+    foundation: {"title": "What the volume actually stores", "text": "TSDF expands to truncated signed distance function. A voxel stores a bounded signed-distance estimate around an observed surface. Integrating another calibrated depth view updates that estimate by weighted averaging, so many views contribute to one surface. Voxel size controls spatial sampling; truncation controls the distance band. Neither is an accuracy measurement.", "label": "Open3D 0.19 RGB-D integration", "url": "https://www.open3d.org/docs/release/tutorial/pipelines/rgbd_integration.html"},
+    summary: 'The reference is a sibling branch independent of YOLO training. TSDF fusion combines masked depth in box_center using saved camera poses, then crops and filters the surface into a metric cloud for runtime registration.',
+    mechanism: [
+      { title: 'Validate paired source evidence', text: 'Require matching capture, depth, mask and label inputs, current box dimensions and calibration revision. Each saved pose must be a finite rigid transform; depth must be aligned to rectified color. By default require at least eight usable views.' },
+      { title: 'Reject non-object depth', text: 'Backproject nonzero masked depth with the saved intrinsics and metric scale. Transform points into box_center and retain those inside the box with a per-axis tolerance max(3 mm, 8% of that dimension). Each view must retain at least 100 depth pixels.' },
+      { title: 'Integrate in the object frame', text: 'Build a scalable TSDF volume with metric voxel and truncation lengths. Pass T_camera_object directly as its world-to-camera extrinsic because the TSDF world is box_center. Inverting that matrix here would use the wrong transform convention.' },
+      { title: 'Extract and clean the surface', text: 'Extract a point cloud, crop every axis to calibrated half-dimensions plus 3 mm, and remove statistical outliers with 20 neighbors and a 2.0 standard-deviation ratio. Estimate normals within 10 mm and orient them outward relative to the box origin.' },
+      { title: 'Package the frame evidence', text: 'Save reference.ply, frame.json, canonical object_keypoints.yaml and a ZIP bundle. Metadata declares metres, box_center, identity scan/object transforms and capture provenance. Optional crop editing must preserve this frame; an unrelated moving-camera diagnostic scan is a separate artifact.' },
+    ],
+    math: { label: 'Metric object-frame crop', expression: '|P_object,i| ≤ dimension_i / 2 + 0.003 m', explanation: 'This final crop uses a fixed 3 mm default margin. It is tighter and conceptually distinct from the earlier per-view 8% tolerance used to filter candidate depth pixels.' },
+    settings: [
+      { name: 'TSDF resolution', value: '2.5 mm voxel; 12.5 mm truncation', note: 'Builder defaults; these are fusion settings, not a measured reference accuracy.' },
+      { name: 'Quality minimums', value: '8 views; 100 pixels/view; 1,000 final points', note: 'The point minimum is checked before crop, after crop and after outlier filtering.' },
+      { name: 'Saved default-session metadata', value: '212 views; 3,811 final points', note: 'Recorded in datasets/my_object_20260925_r2/references/my_object/frame.json; provenance of an existing artifact, not a new run or accuracy result.' },
+    ],
+    checks: [
+      'Inspect all sides for fused duplicates, holes, table remnants and the intended box_center orientation.',
+      'Verify frame.json dimensions/revision match the frozen training geometry.',
+      'For independent reference-based evaluation, explicitly exclude held-out stems: the reference builder uses all reviewed records by default, including YOLO validation views.',
+    ],
+    failures: [
+      { symptom: 'The reference has duplicated or blurred surfaces.', cause: 'An inconsistent saved pose, object movement, depth alignment problem or mask contamination misregistered evidence.' },
+      { symptom: 'Reference build fails its point-count gate.', cause: 'Too little valid masked depth, incomplete coverage or an incompatible calibrated crop leaves insufficient geometry.' },
+    ],
+    example: { input: 'Illustrative X dimension 0.100 m and an extracted point at X = 0.054 m.', process: 'The final default crop admits |X| ≤ 0.050 + 0.003 = 0.053 m.', output: 'The point is removed; a point at X = 0.052 m remains eligible if its other axes also pass.' },
+    sources: [
+      { label: 'TSDF fusion and output checks', path: 'scripts/build_calibrated_reference.py', lines: '30-147' },
+      { label: 'Depth backprojection and initial box tolerance', path: 'nocs_dataset.py', lines: '52-80' },
+      { label: 'Existing reference provenance', path: 'datasets/my_object_20260925_r2/references/my_object/frame.json', lines: '67-79' },
+      { label: 'Frame-locked crop editor', path: 'scripts/collect_process/04b_crop_reference.sh', lines: '4-10' },
+    ],
+  },
+  {
+    id: 'dataset-06',
+    summary: 'The wrappers verify frame consistency and freeze PnP geometry before training two models. Segmentation learns foreground selection. Pose learns the eight image-space corner identities used for initialization and recovery. Their separate checkpoints share one metric corner contract.',
+    mechanism: [
+      { title: 'Freeze geometry before optimization', text: 'Copy calibration.json and the exported canonical object_keypoints.yaml into training_pnp, recording SHA-256 hashes and calibration revision. If a snapshot already exists, verify it and refuse a different source box. This pins two geometry files; it is not a complete training-data or checkpoint hash manifest.' },
+      { title: 'Check paired supervision', text: 'Require matching image, label and mask stems in train and val for both tasks, with equal split counts. This prevents training from incomplete paired exports.' },
+      { title: 'Train segmentation separately', text: 'The segmentation wrapper starts from the local emergency_stop_frozen_backbone checkpoint. Its current defaults use AdamW, 100 epochs maximum, patience 25, batch 8, image size 640, learning rate 0.0001 and freeze 11. The output run name ends _onthefly_seg.' },
+      { title: 'Fine-tune the corner model', text: 'The pose wrapper overrides the generic trainer defaults: start from my_object_rgbd_unfrozen_pose/weights/best.pt, freeze 0 and learning rate 0.00005, with 100 epochs maximum and patience 25. It writes a separate _pose_refined_pose run; the generic CLI fallback yolo11n-pose.pt is not this wrapper’s initialization.' },
+      { title: 'Diversify backgrounds and assemble artifacts', text: 'Both wrappers draw each source 12 times per epoch and replace its background with probability 0.85 before downstream training transforms. Only the background canvas may flip; foreground geometry stays fixed in this compositor. Validation keeps original photographs. Runtime combines both best.pt files with the frozen corners and the independently fused reference.' },
+    ],
+    math: { label: 'Training draws per epoch', expression: 'N_draws = N_training_sources × epoch_repeats', explanation: 'With the wrapper default epoch_repeats = 12, repeated reads can receive newly sampled backgrounds. These draws increase optimizer exposure but do not add independent camera views or expand geometric coverage.' },
+    settings: [
+      { name: 'Shared wrapper defaults', value: '100 epochs max; batch 8; imgsz 640; seed 317', note: 'Saved default-session args.yaml agrees; early stopping can end a run before the requested maximum.' },
+      { name: 'Segmentation / pose', value: 'freeze 11 / 0; lr0 1e−4 / 5e−5', note: 'Current collection wrappers; saved default-session run arguments record the same settings.' },
+      { name: 'Background sampling', value: '12 draws/source; probability 0.85', note: 'Training only. Replacement preserves the current foreground pixels and corresponding labels.' },
+    ],
+    checks: [
+      'Compare saved run arguments and augmentation metadata with intended settings; a wrapper default is not evidence of achieved model quality.',
+      'Inspect validation overlays, mask quality and ordered corner errors under new viewpoints/backgrounds before judging runtime suitability.',
+      'Verify the PnP snapshot hashes and frame contract before launching the runtime bundle.',
+    ],
+    failures: [
+      { symptom: 'A second training launch refuses to save the snapshot.', cause: 'Current calibration/keypoints differ from the existing frozen geometry; a changed box requires a new session.' },
+      { symptom: 'Good training results do not transfer to new views.', cause: 'Repeated backgrounds increased sample draws without adding independent foreground geometry or acquisition conditions.' },
+    ],
+    example: { input: 'Illustrative 80 training source views with epoch_repeats = 12.', process: 'The custom dataset exposes 80 × 12 = 960 draws each epoch; each draw independently considers background replacement.', output: 'There are still 80 independent source views. The 0.85 replacement probability does not promise an exact replaced count in a particular epoch.' },
+    sources: [
+      { label: 'Frozen geometry hashing', path: 'scripts/pnp_snapshot.py', lines: '12-60' },
+      { label: 'Segmentation wrapper', path: 'scripts/collect_process/05_train_segmentation.sh', lines: '4-18' },
+      { label: 'Pose wrapper overrides', path: 'scripts/collect_process/06_train_pose.sh', lines: '4-19' },
+      { label: 'Trainer pairing and optimization', path: 'scripts/train_yolo_seg_pose.py', lines: '21-84' },
+      { label: 'Background sampling behavior', path: 'yolo_background_augmentation.py', lines: '44-104' },
+      { label: 'Saved segmentation run arguments', path: 'training/yolo/my_object_20260925_r2_onthefly_seg/args.yaml', lines: '1-105' },
+      { label: 'Saved pose run arguments', path: 'training/yolo/my_object_20260925_r2_pose_refined_pose/args.yaml', lines: '1-105' },
+      { label: 'Runtime artifact verification', path: 'scripts/collect_process/07_run_live.sh', lines: '4-18' },
+    ],
+  },
+];

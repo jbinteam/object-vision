@@ -1,0 +1,16 @@
+{
+  "duration_s": 10.034164501001214,
+  "counts": {},
+  "accepted_pose_hz": 0.0,
+  "states": {
+    "invalid_cloud_point_count": 100
+  },
+  "seed_modes": {},
+  "pose_samples": [],
+  "metrics": {
+    "unaccepted/points": {
+      "median": 0.0,
+      "p95": 0.0
+    }
+  }
+}

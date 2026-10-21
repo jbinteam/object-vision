@@ -1,0 +1,20 @@
+[
+  [
+    "eval",
+    "(async()=>{const root=document.querySelector('#motion-0');const p=root.dataset.progress;await new Promise(r=>setTimeout(r,300));if(root.dataset.progress!==p)throw Error('reduced moving');if(root.querySelector('[data-motion-play]').textContent!=='Next frame')throw Error('reduced label');root.querySelector('[data-motion-play]').click();if(Number(root.dataset.progress)<=Number(p))throw Error('next frame');if(!root.classList.contains('motion-flat'))throw Error('mobile default should be flat');return 'reduced-motion static/next-frame and mobile flat passed';})()"
+  ],
+  [
+    "eval",
+    "(()=>{document.querySelector('[data-deep-id=\"dataset-05\"]').click();return {overflow:document.documentElement.scrollWidth>innerWidth};})()"
+  ],
+  [
+    "scroll",
+    "#deep-motion"
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/motion-phone.png",
+    "#deep-motion",
+    2
+  ]
+]

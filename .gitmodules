@@ -1,0 +1,9 @@
+[submodule "objectSegmentation/BiRefNet"]
+	path = objectSegmentation/BiRefNet
+	url = https://github.com/ZhengPeng7/BiRefNet.git
+[submodule "objectScanner/isaac_ros_ws/src/isaac-ros-cli"]
+	path = objectScanner/isaac_ros_ws/src/isaac-ros-cli
+	url = https://github.com/NVIDIA-ISAAC-ROS/isaac-ros-cli.git
+[submodule "objectScanner/isaac_ros_ws/src/isaac_ros_pose_estimation"]
+	path = objectScanner/isaac_ros_ws/src/isaac_ros_pose_estimation
+	url = https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_pose_estimation.git

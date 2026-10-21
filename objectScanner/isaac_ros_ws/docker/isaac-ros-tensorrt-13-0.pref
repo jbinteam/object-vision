@@ -1,0 +1,4 @@
+Package: libnvinfer* tensorrt* libnvonnxparsers* python3-libnvinfer*
+Pin: version 10.13.3.9-1+cuda13.0
+Pin-Priority: 1001
+

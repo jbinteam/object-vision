@@ -1,0 +1,64 @@
+[
+  [
+    "click",
+    "#tour"
+  ],
+  [
+    "eval",
+    "(() => { const p=document.querySelector('#dataset .iso-stage'); for(let i=0;i<3;i++) p.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true})); if(p.getAttribute('aria-valuenow')!=='4') throw Error('rapid key navigation'); return 'rapid keys: passed'; })()"
+  ],
+  [
+    "eval",
+    "(async () => { for(const p of document.querySelectorAll('.stream')) { for(let i=0;i<6;i++){p.querySelectorAll('.step')[i].click(); if(p.querySelector('.iso-stage').getAttribute('aria-valuenow')!==String(i+1)) throw Error('stage aria mismatch'); if(!p.querySelectorAll('.step')[i].classList.contains('selected')) throw Error('selection mismatch'); await new Promise(r=>setTimeout(r,700)); } } return '12 stages: passed'; })()"
+  ],
+  [
+    "lines",
+    "docs/visualizations/object-scanner/shots/lines-final.png",
+    ".streams"
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/dataset-detail.png",
+    "#dataset .iso-plate",
+    4
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/pose-detail.png",
+    "#pose .iso-plate",
+    4
+  ],
+  [
+    "click",
+    "#theme"
+  ],
+  [
+    "lines",
+    "docs/visualizations/object-scanner/shots/lines-light.png",
+    ".streams"
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/dataset-detail-light.png",
+    "#dataset .iso-plate",
+    4
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/pose-detail-light.png",
+    "#pose .iso-plate",
+    4
+  ],
+  [
+    "eval",
+    "(() => { const p=document.querySelector('#pose .iso-stage'); document.querySelector('#tour').click(); return {theme:document.body.dataset.theme,tour:document.querySelector('#tour').textContent,lastStage:p.getAttribute('aria-valuenow'),sideways:document.documentElement.scrollWidth>innerWidth}; })()"
+  ],
+  [
+    "wait",
+    14000
+  ],
+  [
+    "eval",
+    "(() => { if(document.querySelector('#dataset .iso-stage').getAttribute('aria-valuenow')!=='1') throw Error('tour resume did not wrap from final stage'); return 'tour resumes from selection: passed'; })()"
+  ]
+]

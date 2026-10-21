@@ -1,0 +1,12 @@
+# Alternative/comparison preset: GPU YOLO with cached CPU ICP.
+yolo_segmentation:
+  ros__parameters:
+    yolo_device: "cuda:0"
+    yolo_half: false
+yolo_observation:
+  ros__parameters:
+    yolo_device: "cuda:0"
+    yolo_half: false
+icp_pose:
+  ros__parameters:
+    icp_backend: cached

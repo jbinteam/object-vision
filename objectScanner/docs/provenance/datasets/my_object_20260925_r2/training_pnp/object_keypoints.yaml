@@ -1,0 +1,31 @@
+# Canonical object-frame cuboid corners in metres.
+# Convention: P_camera = T_camera_object * P_object
+object_frame: box_center
+units: m
+object_keypoints:
+  - id: 0
+    name: xneg_yneg_zneg
+    xyz: [-0.050175962, -0.047135801, -0.046072681]
+  - id: 1
+    name: xpos_yneg_zneg
+    xyz: [0.050175962, -0.047135801, -0.046072681]
+  - id: 2
+    name: xneg_ypos_zneg
+    xyz: [-0.050175962, 0.047135801, -0.046072681]
+  - id: 3
+    name: xpos_ypos_zneg
+    xyz: [0.050175962, 0.047135801, -0.046072681]
+  - id: 4
+    name: xneg_yneg_zpos
+    xyz: [-0.050175962, -0.047135801, 0.046072681]
+  - id: 5
+    name: xpos_yneg_zpos
+    xyz: [0.050175962, -0.047135801, 0.046072681]
+  - id: 6
+    name: xneg_ypos_zpos
+    xyz: [-0.050175962, 0.047135801, 0.046072681]
+  - id: 7
+    name: xpos_ypos_zpos
+    xyz: [0.050175962, 0.047135801, 0.046072681]
+symmetry:
+  type: none

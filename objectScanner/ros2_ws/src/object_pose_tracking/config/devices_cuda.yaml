@@ -1,0 +1,13 @@
+yolo_segmentation:
+  ros__parameters:
+    yolo_device: "cuda:0"
+    # Optional FP16; keep FP32 until mask quality is compared on real images.
+    yolo_half: false
+yolo_observation:
+  ros__parameters:
+    yolo_device: "cuda:0"
+    yolo_half: false
+icp_pose:
+  ros__parameters:
+    icp_backend: cuda
+    icp_cuda_device: 0

@@ -1,0 +1,30 @@
+[
+  [
+    "eval",
+    "(() => { if(document.querySelector('#tour').textContent!=='Next stage') throw Error('reduced motion label'); return 'reduced motion starts paused: passed'; })()"
+  ],
+  [
+    "click",
+    "#tour"
+  ],
+  [
+    "wait",
+    100
+  ],
+  [
+    "eval",
+    "(() => { if(document.querySelector('#dataset .iso-stage').getAttribute('aria-valuenow')!=='2') throw Error('next stage'); return 'reduced motion discrete advance: passed'; })()"
+  ],
+  [
+    "click",
+    "#pose .step[data-step=\"3\"]"
+  ],
+  [
+    "wait",
+    100
+  ],
+  [
+    "eval",
+    "(() => { if(document.querySelector('#pose .iso-stage').getAttribute('aria-valuenow')!=='4') throw Error('reduced selection'); return 'reduced motion selection: passed'; })()"
+  ]
+]

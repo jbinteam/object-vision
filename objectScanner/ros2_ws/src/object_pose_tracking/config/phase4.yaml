@@ -1,0 +1,110 @@
+rgbd_camera:
+  ros__parameters:
+    reliable_transport: true
+    camera_backend: orbbec
+    optical_frame: camera_color_optical_frame
+    publish_rate: 20.0
+    downscale: 1
+    # Gemini 305 closest-range mode (256 disparity range), metres.
+    minimum_depth: 0.04
+    maximum_depth: 1.5
+    maximum_data_age: 0.75
+    worker_timeout: 10.0
+    worker_startup_timeout: 30.0
+    serial: ""
+
+yolo_observation:
+  ros__parameters:
+    reliable_transport: true
+    segmentation_target_class: my_object
+    pose_target_class: my_object
+    segmentation_confidence_threshold: 0.50
+    pose_detection_confidence_threshold: 0.25
+    pose_segmentation_minimum_iou: 0.10
+    pose_only_for_reinitialization: true
+    expected_keypoints: 8
+    yolo_device: cpu
+    yolo_half: false
+    yolo_image_size: 640
+    cpu_threads: 2
+    maximum_data_age: 0.75
+    association_minimum_iou: 0.10
+    association_reset_after_misses: 5
+
+object_cloud:
+  ros__parameters:
+    reliable_transport: true
+    camera_frame: camera_color_optical_frame
+    minimum_depth: 0.04
+    maximum_depth: 1.5
+    voxel_size: 0.003
+    outlier_neighbors: 20
+    outlier_std_ratio: 2.0
+    minimum_points: 30
+    sync_queue_size: 20
+    sync_slop: 0.0
+    maximum_data_age: 0.75
+
+pnp_gicp_pose:
+  ros__parameters:
+    reliable_transport: true
+    camera_frame: camera_color_optical_frame
+    object_frame: box_center
+    base_frame: base_link
+    expected_keypoints: 8
+    maximum_data_age: 0.75
+    sync_queue_size: 20
+
+    keypoint_confidence_threshold: 0.35
+    min_valid_keypoints: 4
+    pnp_ransac_iterations: 200
+    pnp_reprojection_threshold: 5.0
+    pnp_confidence: 0.99
+    min_pnp_inliers: 4
+    max_mean_reprojection_error: 5.0
+    # Reject a local GICP minimum that contradicts PnP's RANSAC consensus.
+    max_gicp_keypoint_reprojection_error: 10.0
+    depth_validation_enabled: true
+    max_depth_translation_error: 0.12
+    # Correct monocular PnP Z-scale only for a material, bounded discrepancy.
+    # Raw PnP remains published unchanged for diagnostics.
+    depth_seed_correction_enabled: true
+    depth_seed_correction_trigger: 0.020
+    depth_seed_correction_maximum: 0.080
+
+    minimum_points: 30
+    minimum_correspondences: 30
+    gicp_fitness_threshold: 0.20
+    gicp_rmse_threshold: 0.012
+    gicp_overlap_threshold: 0.10
+    visibility_filter_enabled: true
+    visibility_normal_facing: true
+    # PnP reinitialization uses all levels; established tracking uses fine only.
+    tracking_fine_only: true
+    # The learned initializer is already inside the local basin. A conservative
+    # single fine GICP update avoided partial-to-full drift on held-out RGB-D.
+    gicp_coarse_enabled: false
+    gicp_coarse_voxel_size: 0.010
+    gicp_coarse_max_correspondence_distance: 0.020
+    gicp_coarse_max_iterations: 25
+    gicp_coarse_transformation_epsilon: 0.00001
+    gicp_medium_enabled: false
+    gicp_medium_voxel_size: 0.005
+    gicp_medium_max_correspondence_distance: 0.012
+    gicp_medium_max_iterations: 20
+    gicp_medium_transformation_epsilon: 0.000003
+    gicp_fine_enabled: true
+    # 3 mm / 10 iterations measured substantially faster for per-frame tracking;
+    # coarse+medium still protect the PnP reinitialization basin.
+    gicp_fine_voxel_size: 0.002
+    gicp_fine_max_correspondence_distance: 0.008
+    gicp_fine_max_iterations: 1
+    gicp_fine_transformation_epsilon: 0.000001
+
+    tracking_failures_until_lost: 2
+    maximum_translation_jump: 0.12
+    maximum_rotation_jump: 0.8
+    translation_filter_alpha: 0.45
+    rotation_filter_alpha: 0.45
+    publish_debug_tf: true
+    axis_length: 0.06

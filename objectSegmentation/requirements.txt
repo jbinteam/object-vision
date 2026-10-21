@@ -1,0 +1,7 @@
+-r BiRefNet/requirements.txt
+torch==2.8.0
+torchvision==0.23.0
+opencv-python==4.11.0.86
+huggingface-hub==0.36.0
+safetensors
+Pillow

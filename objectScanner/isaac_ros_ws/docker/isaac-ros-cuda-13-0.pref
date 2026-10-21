@@ -1,0 +1,8 @@
+Package: cuda-*-13-[1-9]* libnv*-13-[1-9]*
+Pin: version *
+Pin-Priority: -1
+
+Package: cuda-* libnv*
+Pin: version 13.0.*
+Pin-Priority: 1001
+

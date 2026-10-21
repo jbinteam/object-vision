@@ -1,0 +1,137 @@
+{
+  "duration_s": 20.014457057000072,
+  "counts": {
+    "axes_delete": 29,
+    "poses": 70,
+    "axes_add": 70
+  },
+  "accepted_pose_hz": 3.4974718425108335,
+  "states": {
+    "icp_rejected:iteration_limit": 42,
+    "tracking_seed_expired": 8,
+    "icp_rejected:time_budget_exceeded": 14,
+    "icp_accepted": 70
+  },
+  "seed_modes": {
+    "unaccepted/previous_pose": 47,
+    "unaccepted/centroid": 9,
+    "accepted/centroid": 8,
+    "accepted/previous_pose": 62
+  },
+  "pose_samples": [
+    {
+      "frame": "camera_color_optical_frame",
+      "stamp_sec": 1790153420,
+      "stamp_nanosec": 740546295,
+      "xyz": [
+        0.05286000828480163,
+        -0.04997879771518729,
+        0.5214124179530962
+      ],
+      "quaternion_xyzw": [
+        0.6276494158313091,
+        0.7583042124603185,
+        -0.15270146347534266,
+        0.08782479845716108
+      ]
+    },
+    {
+      "frame": "camera_color_optical_frame",
+      "stamp_sec": 1790153420,
+      "stamp_nanosec": 838396013,
+      "xyz": [
+        0.053179085412487094,
+        -0.05184656104201978,
+        0.5221673021094372
+      ],
+      "quaternion_xyzw": [
+        0.643261114492263,
+        0.7429530404428059,
+        -0.1559478137502608,
+        0.09958010677578154
+      ]
+    }
+  ],
+  "metrics": {
+    "unaccepted/fitness": {
+      "median": 1.0,
+      "p95": 1.0
+    },
+    "unaccepted/rmse_m": {
+      "median": 0.007247251177884349,
+      "p95": 0.008417852285354875
+    },
+    "unaccepted/correspondence_ratio": {
+      "median": 1.0,
+      "p95": 1.0
+    },
+    "unaccepted/correspondences": {
+      "median": 1940.0,
+      "p95": 1940.0
+    },
+    "unaccepted/iterations": {
+      "median": 60.0,
+      "p95": 60.0
+    },
+    "unaccepted/preparation_ms": {
+      "median": 5.295481999837648,
+      "p95": 9.975774249824099
+    },
+    "unaccepted/icp_ms": {
+      "median": 220.02751399986664,
+      "p95": 246.68788474991743
+    },
+    "unaccepted/tracking_seed_age_ms": {
+      "median": 287.5957105,
+      "p95": 719.6419235000001
+    },
+    "accepted/fitness": {
+      "median": 1.0,
+      "p95": 1.0
+    },
+    "accepted/rmse_m": {
+      "median": 0.006892606225625151,
+      "p95": 0.0078286620617422
+    },
+    "accepted/correspondence_ratio": {
+      "median": 1.0,
+      "p95": 1.0
+    },
+    "accepted/correspondences": {
+      "median": 1940.0,
+      "p95": 1940.0
+    },
+    "accepted/iterations": {
+      "median": 15.0,
+      "p95": 32.64999999999999
+    },
+    "accepted/preparation_ms": {
+      "median": 5.083244499928696,
+      "p95": 9.411625999746319
+    },
+    "accepted/icp_ms": {
+      "median": 52.84060550002323,
+      "p95": 130.60627040013057
+    },
+    "accepted/tracking_seed_age_ms": {
+      "median": 288.704607,
+      "p95": 697.407081
+    },
+    "accepted/pose_total_ms": {
+      "median": 61.99790899972868,
+      "p95": 136.98005325027222
+    },
+    "accepted/receipt_to_pose_ms": {
+      "median": 244.232231,
+      "p95": 352.19998004999997
+    },
+    "accepted/translation_delta_m": {
+      "median": 0.003653355542478848,
+      "p95": 0.00949394347467658
+    },
+    "accepted/rotation_delta_rad": {
+      "median": 0.09828205522467082,
+      "p95": 0.18391207986587543
+    }
+  }
+}

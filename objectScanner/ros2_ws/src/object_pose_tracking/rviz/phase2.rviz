@@ -1,0 +1,85 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Fixed Frame: camera_color_optical_frame
+    Background Color: 35; 38; 42
+    Frame Rate: 15
+  Displays:
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Segmented object
+    Enabled: true
+    Topic:
+      Value: /object/cloud
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 5
+    Style: Points
+    Size (Pixels): 3
+    Color Transformer: RGB8
+    Decay Time: 0.5
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Aligned reference (ICP)
+    Enabled: true
+    Topic:
+      Value: /object/reference_cloud_transformed
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      Depth: 1
+    Style: Points
+    Size (Pixels): 2
+    Color Transformer: FlatColor
+    Color: 255; 220; 60
+    Alpha: 0.45
+    Decay Time: 0.0
+  - Class: rviz_default_plugins/MarkerArray
+    Name: ICP object frame (XYZ)
+    Enabled: true
+    Topic:
+      Value: /object/frame_axes
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      Depth: 1
+  - Class: rviz_default_plugins/Image
+    Name: RGB
+    Enabled: true
+    Topic:
+      Value: /camera/color/image_raw
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      Depth: 1
+  - Class: rviz_default_plugins/Image
+    Name: Object mask
+    Enabled: true
+    Topic:
+      Value: /object/mask
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      Depth: 1
+  Tools:
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Interact
+    Hide Inactive Objects: true
+  - Class: rviz_default_plugins/Select
+  - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Name: Current View
+      Target Frame: <Fixed Frame>
+      Near Clip Distance: 0.01
+      Distance: 1.5
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0.7
+      Pitch: 0.3
+      Yaw: 0.5
+Window Geometry:
+  Width: 1280
+  Height: 800

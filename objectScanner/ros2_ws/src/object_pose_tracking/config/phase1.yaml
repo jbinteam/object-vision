@@ -1,0 +1,38 @@
+rgbd_camera:
+  ros__parameters:
+    reliable_transport: true
+    camera_backend: orbbec
+    optical_frame: camera_color_optical_frame
+    publish_rate: 10.0
+    downscale: 1
+    minimum_depth: 0.15
+    maximum_depth: 1.5
+    maximum_data_age: 0.75
+    worker_timeout: 10.0
+    worker_startup_timeout: 30.0
+    serial: ""
+yolo_segmentation:
+  ros__parameters:
+    reliable_transport: true
+    target_object_class: emergency_stop
+    yolo_confidence_threshold: 0.5
+    yolo_device: cpu
+    yolo_half: false
+    yolo_image_size: 640
+    cpu_threads: 2
+    maximum_data_age: 0.75
+    association_minimum_iou: 0.1
+    association_reset_after_misses: 5
+object_cloud:
+  ros__parameters:
+    reliable_transport: true
+    camera_frame: camera_color_optical_frame
+    minimum_depth: 0.15
+    maximum_depth: 1.5
+    voxel_size: 0.003
+    outlier_neighbors: 20
+    outlier_std_ratio: 2.0
+    minimum_points: 30
+    sync_queue_size: 20
+    sync_slop: 0.0
+    maximum_data_age: 0.75

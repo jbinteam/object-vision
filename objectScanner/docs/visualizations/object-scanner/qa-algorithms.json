@@ -1,0 +1,38 @@
+[
+  [
+    "eval",
+    "document.querySelector('[data-deep-id=\"pose-05\"]').click()"
+  ],
+  [
+    "wait",
+    300
+  ],
+  [
+    "eval",
+    "(() => { const a=document.querySelector('#pose-05 .foundation a');if(!a||!a.href.includes('v0.19.0'))throw Error('missing pinned algorithm source'); return 'pinned GICP explanation: passed';})()"
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/deep-gicp.png",
+    ".deep-layout",
+    1
+  ],
+  [
+    "eval",
+    "document.querySelector('#theme').click();document.querySelector('[data-deep-id=\"dataset-05\"]').click()"
+  ],
+  [
+    "wait",
+    300
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/deep-tsdf-light.png",
+    ".deep-layout",
+    1
+  ],
+  [
+    "eval",
+    "(() => {if(document.documentElement.scrollWidth>innerWidth)throw Error('overflow');return 'algorithm additions: clean layout';})()"
+  ]
+]

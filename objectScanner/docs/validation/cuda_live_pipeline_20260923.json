@@ -1,0 +1,83 @@
+{
+  "duration_s": 10.009886366999126,
+  "counts": {
+    "depth": 101,
+    "color": 101,
+    "mask": 102,
+    "cloud": 101,
+    "valid_cloud": 0
+  },
+  "cloud_hz": 10.090024631346429,
+  "valid_cloud_hz": 0.0,
+  "states": {
+    "rgbd_camera:camera_streaming": 101,
+    "yolo_segmentation:no_matching_instance": 101,
+    "object_cloud:insufficient_object_points": 101,
+    "icp_pose:invalid_cloud_point_count": 101
+  },
+  "sample_clouds": [],
+  "matched_mask_depth_stamps": 101,
+  "matched_cloud_depth_stamps": 100,
+  "metrics": {
+    "rgbd_camera/camera_publish_ms": {
+      "median": 3.573664000214194,
+      "p95": 6.996662999881664
+    },
+    "rgbd_camera/receipt_to_publish_ms": {
+      "median": 50.070853,
+      "p95": 68.27927
+    },
+    "rgbd_camera/width": {
+      "median": 960.0,
+      "p95": 960.0
+    },
+    "rgbd_camera/height": {
+      "median": 540.0,
+      "p95": 540.0
+    },
+    "yolo_segmentation/segmentation_ms": {
+      "median": 17.06729599936807,
+      "p95": 25.030032998984098
+    },
+    "yolo_segmentation/receipt_to_mask_ms": {
+      "median": 74.409055,
+      "p95": 103.775802
+    },
+    "yolo_segmentation/mask_pixels": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "yolo_segmentation/detections": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "object_cloud/input_points": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "object_cloud/points": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "object_cloud/cloud_extraction_ms": {
+      "median": 2.946773000076064,
+      "p95": 5.220448998443317
+    },
+    "object_cloud/preprocessing_ms": {
+      "median": 0.019609000446507707,
+      "p95": 0.043289999666740187
+    },
+    "object_cloud/cloud_total_ms": {
+      "median": 3.251173999160528,
+      "p95": 5.525871998543153
+    },
+    "object_cloud/receipt_to_cloud_ms": {
+      "median": 78.51159700000001,
+      "p95": 108.37770400000001
+    },
+    "icp_pose/points": {
+      "median": 0.0,
+      "p95": 0.0
+    }
+  }
+}

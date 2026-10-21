@@ -1,0 +1,93 @@
+[
+  [
+    "eval",
+    "(async()=>{const links=[...document.querySelectorAll('[data-deep-id]')];for(let n=0;n<12;n++){links[n].click();const root=document.querySelector('#deep-motion'),seek=root.querySelector('input');if(root.closest('.lesson').id!==links[n].dataset.deepId)throw Error('player in wrong lesson');const shapes=[];for(const p of [0,250,500,750,1000]){seek.value=p;seek.dispatchEvent(new Event('input',{bubbles:true}));shapes.push(root.querySelector('[data-motion-body]').innerHTML);if(Math.abs(Number(root.dataset.progress)-p/1000)>.001)throw Error('seek mismatch');if(!root.querySelector('[data-motion-phase]').textContent)throw Error('missing phase');}if(new Set(shapes).size<4)throw Error('insufficient motion '+n);if(root.querySelector('[data-readout]').textContent!==`0${n%6+1} / 06`)throw Error('stage label');const overview=document.querySelector('#motion-'+Math.floor(n/6));if(+overview.dataset.motionStep!==n%6)throw Error('overview motion mismatch');}return '12 distinct animations, 60 scrubbed frames, lesson + overview synchronization passed';})()"
+  ],
+  [
+    "scroll",
+    "#deep-motion"
+  ],
+  [
+    "wait",
+    250
+  ],
+  [
+    "click",
+    "#deep-motion [data-motion-replay]"
+  ],
+  [
+    "wait",
+    650
+  ],
+  [
+    "eval",
+    "(()=>{const p=Number(document.querySelector('#deep-motion').dataset.progress);if(!(p>0&&p<.2))throw Error('replay not running '+p);return 'replay and timed advancement passed';})()"
+  ],
+  [
+    "click",
+    "#deep-motion [data-motion-play]"
+  ],
+  [
+    "eval",
+    "(async()=>{const root=document.querySelector('#deep-motion'),p=root.dataset.progress;await new Promise(r=>setTimeout(r,250));if(root.dataset.progress!==p)throw Error('pause drift');return 'pause stable';})()"
+  ],
+  [
+    "key",
+    "ArrowRight",
+    "#deep-motion input"
+  ],
+  [
+    "eval",
+    "(()=>{const root=document.querySelector('#deep-motion');if(root.querySelector('[data-motion-play]').getAttribute('aria-pressed')!=='false')throw Error('seek should pause');return 'keyboard seeking passed';})()"
+  ],
+  [
+    "eval",
+    "(()=>{document.querySelector('[data-deep-id=\"pose-06\"]').click();const s=document.querySelector('#deep-motion input');s.value=790;s.dispatchEvent(new Event('input'));return document.querySelector('#deep-motion [data-motion-readout]').textContent;})()"
+  ],
+  [
+    "scroll",
+    "#deep-motion"
+  ],
+  [
+    "wait",
+    100
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/motion-deep.png",
+    "#deep-motion",
+    1
+  ],
+  [
+    "click",
+    "#deep-motion [data-motion-flat]"
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/motion-console.png",
+    "#deep-motion",
+    2
+  ],
+  [
+    "eval",
+    "(async()=>{const root=document.querySelector('#deep-motion');root.querySelector('[data-motion-replay]').click();await new Promise(r=>setTimeout(r,150));document.querySelector('h1').scrollIntoView();await new Promise(r=>setTimeout(r,150));const p=root.dataset.progress;await new Promise(r=>setTimeout(r,300));if(root.dataset.progress!==p)throw Error('offscreen player moving');return 'offscreen pause passed';})()"
+  ],
+  [
+    "eval",
+    "(()=>{document.querySelector('#theme').click();return {sideways:document.documentElement.scrollWidth>innerWidth,theme:document.body.dataset.theme};})()"
+  ],
+  [
+    "scroll",
+    "#deep-motion"
+  ],
+  [
+    "wait",
+    150
+  ],
+  [
+    "shot",
+    "docs/visualizations/object-scanner/shots/motion-light.png",
+    "#deep-motion",
+    1
+  ]
+]

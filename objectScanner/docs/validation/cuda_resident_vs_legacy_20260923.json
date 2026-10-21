@@ -1,0 +1,3114 @@
+{
+  "input": "synthetic transforms of supplied reference",
+  "baseline": "cuda_legacy",
+  "candidate": "cuda",
+  "cases": 60,
+  "repeats": 2,
+  "configuration": {
+    "voxel_size": 0.003,
+    "minimum_points": 30,
+    "icp_type": "point_to_plane",
+    "icp_backend": "cached",
+    "icp_cuda_device": 0,
+    "icp_max_iterations": 60,
+    "icp_max_correspondence_distance": 0.025,
+    "icp_transformation_epsilon": 1e-05,
+    "icp_rotation_epsilon": 0.0001,
+    "icp_time_budget": 2.0,
+    "normal_radius": 0.015,
+    "normal_max_neighbors": 30,
+    "fitness_threshold": 0.35,
+    "rmse_threshold": 0.012,
+    "minimum_correspondences": 30
+  },
+  "summary": {
+    "cuda_legacy": {
+      "accepted": 106,
+      "reasons": {
+        "accepted": 106,
+        "iteration_limit": 14
+      },
+      "icp_ms": {
+        "median": 9.79916449978191,
+        "p95": 90.00009259925719
+      },
+      "preparation_ms": {
+        "median": 3.2633410000926233,
+        "p95": 4.137388650542561
+      },
+      "iterations": {
+        "median": 4.5,
+        "p95": 60.0
+      }
+    },
+    "cuda": {
+      "accepted": 106,
+      "reasons": {
+        "accepted": 106,
+        "iteration_limit": 14
+      },
+      "icp_ms": {
+        "median": 4.14632950014493,
+        "p95": 31.067812199944456
+      },
+      "preparation_ms": {
+        "median": 3.265174999796727,
+        "p95": 4.204905399728886
+      },
+      "iterations": {
+        "median": 4.5,
+        "p95": 60.0
+      }
+    }
+  },
+  "acceptance_agreement": true,
+  "scenarios": {
+    "full_warm": {
+      "cuda_legacy": {
+        "accepted": 60,
+        "attempts": 60,
+        "icp_median_ms": 6.707183501021063,
+        "iterations_median": 3.0
+      },
+      "cuda": {
+        "accepted": 60,
+        "attempts": 60,
+        "icp_median_ms": 2.5075149997064727,
+        "iterations_median": 3.0
+      }
+    },
+    "partial_noisy_centroid": {
+      "cuda_legacy": {
+        "accepted": 26,
+        "attempts": 30,
+        "icp_median_ms": 17.131081499428547,
+        "iterations_median": 11.0
+      },
+      "cuda": {
+        "accepted": 26,
+        "attempts": 30,
+        "icp_median_ms": 6.941020500562445,
+        "iterations_median": 11.0
+      }
+    },
+    "partial_noisy_warm": {
+      "cuda_legacy": {
+        "accepted": 20,
+        "attempts": 30,
+        "icp_median_ms": 18.652816499525215,
+        "iterations_median": 12.0
+      },
+      "cuda": {
+        "accepted": 20,
+        "attempts": 30,
+        "icp_median_ms": 7.758812500469503,
+        "iterations_median": 12.0
+      }
+    }
+  },
+  "rejection_reason_agreement": true,
+  "max_accepted_pose_difference_m": 3.1401849173675503e-16,
+  "max_accepted_pose_difference_rad": 5.802176783577771e-16,
+  "rows": [
+    {
+      "frame": 0,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 1.5577778178957092e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.519798000430455,
+        "preparation_ms": 3.5440280007605907,
+        "rmse_m": 0.00041125625227322014,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.731439999479335,
+        "preparation_ms": 3.568964000805863,
+        "rmse_m": 0.0004112562522732205,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 1,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 1.8041124150158794e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 3.0061519992159447,
+        "preparation_ms": 3.7000339998485288,
+        "rmse_m": 0.0004151902575189866,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 8.888620999641716,
+        "preparation_ms": 3.749891000552452,
+        "rmse_m": 0.00041519025751898656,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 2,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 9.309503074677275e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.252704001075472,
+        "preparation_ms": 3.522517999954289,
+        "rmse_m": 0.000412732218340453,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.828455000781105,
+        "preparation_ms": 3.3562530006747693,
+        "rmse_m": 0.00041273221834045283,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 3,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.1775693440128312e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.5297100000898354,
+        "preparation_ms": 3.661626999019063,
+        "rmse_m": 0.00041343610462168744,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 8.15256899841188,
+        "preparation_ms": 3.6261269997339696,
+        "rmse_m": 0.00041343610462168804,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 4,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 8.886119947416683e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.669549999263836,
+        "preparation_ms": 3.9056519999576267,
+        "rmse_m": 0.0004344424453399944,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.685691999431583,
+        "preparation_ms": 3.832571999737411,
+        "rmse_m": 0.0004344424453399942,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 5,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 2.1544120232613906e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 4.172860999460681,
+        "preparation_ms": 3.5845630009134766,
+        "rmse_m": 0.00047776008020462146,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 8.325483000589884,
+        "preparation_ms": 3.800608001256478,
+        "rmse_m": 0.0004777600802046204,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 6,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.3738309013483032e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.570100999146234,
+        "preparation_ms": 3.6674149996542837,
+        "rmse_m": 0.0004958349000849141,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.6042200006486382,
+        "preparation_ms": 3.4038779995171353,
+        "rmse_m": 0.0004958349000849144,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 7,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.9229626863835643e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.6253460000589257,
+        "preparation_ms": 3.274995999163366,
+        "rmse_m": 0.00047812951015687566,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 8.564715000829892,
+        "preparation_ms": 4.031880000184174,
+        "rmse_m": 0.00047812951015687615,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 8,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.8410966031475738e-16,
+      "pose_difference_rad": 1.316562550716263e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.199378000223078,
+        "preparation_ms": 3.3718049999151845,
+        "rmse_m": 0.0004626596881863119,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.7208819992665667,
+        "preparation_ms": 3.389784000319196,
+        "rmse_m": 0.00046265968818631157,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 9,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 2.7928509224031823e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.512937999199494,
+        "preparation_ms": 3.6609600010706345,
+        "rmse_m": 0.0004533017278739336,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.224693999887677,
+        "preparation_ms": 3.56458699934592,
+        "rmse_m": 0.00045330172787393395,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 10,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.760893866893587e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.4102569995156955,
+        "preparation_ms": 3.5171719991922146,
+        "rmse_m": 0.0004525055225029547,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.958966999358381,
+        "preparation_ms": 3.2589740003459156,
+        "rmse_m": 0.00045250552250295466,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 11,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.1102230246251565e-16,
+      "pose_difference_rad": 1.415262216750919e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.96273099957034,
+        "preparation_ms": 3.7173959990468575,
+        "rmse_m": 0.00046534019829408565,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.52990900016448,
+        "preparation_ms": 3.5490019999997457,
+        "rmse_m": 0.00046534019829408597,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 12,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 4.8074067159589095e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 8.086156998615479,
+        "preparation_ms": 3.2593510004517157,
+        "rmse_m": 0.0004720083941250548,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.625769000587752,
+        "preparation_ms": 3.404838000278687,
+        "rmse_m": 0.00047200839412505496,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 13,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.4555146645863653e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.5170329990942264,
+        "preparation_ms": 3.4690680004132446,
+        "rmse_m": 0.0004659872635428941,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.356513999184244,
+        "preparation_ms": 3.4271870008524274,
+        "rmse_m": 0.00046598726354289433,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 14,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.6653345369377348e-16,
+      "pose_difference_rad": 1.3738309013483032e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.407287999536493,
+        "preparation_ms": 3.3895569995365804,
+        "rmse_m": 0.00046696190762487397,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.63131700012309,
+        "preparation_ms": 3.3056899992516264,
+        "rmse_m": 0.0004669619076248743,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 15,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 2.2887833992611187e-16,
+      "pose_difference_rad": 6.938893903907228e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.7153150003869087,
+        "preparation_ms": 3.3184269996127114,
+        "rmse_m": 0.0005144812370516846,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.515379000120447,
+        "preparation_ms": 3.756813999643782,
+        "rmse_m": 0.0005144812370516843,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 16,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 5.721958498152797e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.8744340003613615,
+        "preparation_ms": 3.419382001084159,
+        "rmse_m": 0.0005225859644759331,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.655294001669972,
+        "preparation_ms": 3.0837419999443227,
+        "rmse_m": 0.0005225859644759333,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 17,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 5.887846720064156e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.003988999305875,
+        "preparation_ms": 3.4624919990164926,
+        "rmse_m": 0.0005215643890899092,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.76992399894516,
+        "preparation_ms": 3.816924001512234,
+        "rmse_m": 0.0005215643890899092,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 18,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 5.721958498152797e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.126008998966427,
+        "preparation_ms": 3.7043239990453003,
+        "rmse_m": 0.0005439997458778971,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.646216998982709,
+        "preparation_ms": 3.2778330005385214,
+        "rmse_m": 0.0005439997458778964,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 19,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 1.4488835837920476e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.5020920002134517,
+        "preparation_ms": 3.220298000087496,
+        "rmse_m": 0.0005299088903578008,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.505953000669251,
+        "preparation_ms": 3.2414979996246984,
+        "rmse_m": 0.0005299088903578008,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 20,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.1102230246251565e-16,
+      "pose_difference_rad": 1.760893866893587e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.698046001474722,
+        "preparation_ms": 3.5487900004227413,
+        "rmse_m": 0.0004953563436078171,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.743483000813285,
+        "preparation_ms": 3.167505999954301,
+        "rmse_m": 0.0004953563436078183,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 21,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.5700924586837752e-16,
+      "pose_difference_rad": 9.412373634839028e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.5894289992720587,
+        "preparation_ms": 3.6470409995672526,
+        "rmse_m": 0.0004761816169825174,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.029801001408487,
+        "preparation_ms": 3.464688999883947,
+        "rmse_m": 0.0004761816169825175,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 22,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 2.3551386880256624e-16,
+      "pose_difference_rad": 1.0103182026100663e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.943570999283111,
+        "preparation_ms": 3.6028119993716246,
+        "rmse_m": 0.00045892443287377983,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.6885070001299027,
+        "preparation_ms": 3.3896450004249346,
+        "rmse_m": 0.0004589244328737795,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 23,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.3383253895372866e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.5958890000765678,
+        "preparation_ms": 3.530304000378237,
+        "rmse_m": 0.0004652627362207205,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 9.560758000588976,
+        "preparation_ms": 3.666307999083074,
+        "rmse_m": 0.00046526273622072065,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 24,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 2.1000903724951387e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.725331999201444,
+        "preparation_ms": 3.239849000237882,
+        "rmse_m": 0.0004488874178871304,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.9848199992557056,
+        "preparation_ms": 3.5475210006552516,
+        "rmse_m": 0.0004488874178871306,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 25,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 1.4220500840710912e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.9383740002231207,
+        "preparation_ms": 4.195020999759436,
+        "rmse_m": 0.00047014679814929943,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.133605000490206,
+        "preparation_ms": 3.814759000306367,
+        "rmse_m": 0.0004701467981492996,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 26,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 9.309503074677274e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.43312799911655,
+        "preparation_ms": 3.3670639986667084,
+        "rmse_m": 0.00048427963774085297,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.7088440001534764,
+        "preparation_ms": 3.2274310015054652,
+        "rmse_m": 0.00048427963774085416,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 27,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 1.0385185452638061e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.5132689988822676,
+        "preparation_ms": 3.588656998545048,
+        "rmse_m": 0.00047360399187902993,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.3973790003947215,
+        "preparation_ms": 3.5558509989641607,
+        "rmse_m": 0.00047360399187903004,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 28,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 5.1925927263190304e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.219887000042945,
+        "preparation_ms": 3.267330999733531,
+        "rmse_m": 0.0004720765035369383,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.9556399986176984,
+        "preparation_ms": 3.481046000160859,
+        "rmse_m": 0.00047207650353693793,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 29,
+      "scenario": "full_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 1.1188630228279527e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.6299130004190374,
+        "preparation_ms": 3.5266480008431245,
+        "rmse_m": 0.0004864122187896961,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 8.590047000325285,
+        "preparation_ms": 3.4679949985729763,
+        "rmse_m": 0.00048641221878969695,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 30,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.2719202621569e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 18.662799000594532,
+        "preparation_ms": 2.2559129993169336,
+        "rmse_m": 0.006879376211416924,
+        "fitness": 0.954639175257732
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 8.164147000570665,
+        "preparation_ms": 2.3685889991611475,
+        "rmse_m": 0.006879376211416933,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 31,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.2177709378935645e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 7.505892999688513,
+        "preparation_ms": 3.3858859987958567,
+        "rmse_m": 0.00687937645714237,
+        "fitness": 0.954639175257732
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 19.321665000461508,
+        "preparation_ms": 3.2122209995577578,
+        "rmse_m": 0.006879376457142372,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 32,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 4.2321564813699053e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 11.885145999258384,
+        "preparation_ms": 2.331792999029858,
+        "rmse_m": 0.0068828560693131235,
+        "fitness": 0.9572164948453609
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 5.029791000197292,
+        "preparation_ms": 2.574116999312537,
+        "rmse_m": 0.006882856069313154,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 33,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 2.0770370905276122e-16,
+      "pose_difference_rad": 2.1722173840913645e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 8.575330999519792,
+        "preparation_ms": 2.898331000324106,
+        "rmse_m": 0.00688352013787008,
+        "fitness": 0.9572164948453609
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 15.768216000651591,
+        "preparation_ms": 3.372200000740122,
+        "rmse_m": 0.006883520137870056,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 34,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 0.0,
+      "pose_difference_rad": 3.3248816341010896e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 14,
+        "icp_ms": 23.217640999064315,
+        "preparation_ms": 2.5853099996311357,
+        "rmse_m": 0.006759592066512694,
+        "fitness": 0.954639175257732
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 14,
+        "icp_ms": 9.325265000370564,
+        "preparation_ms": 2.509419000489288,
+        "rmse_m": 0.0067595920665127025,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 35,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 3.716035212596415e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 8.267921999504324,
+        "preparation_ms": 3.08759600011399,
+        "rmse_m": 0.0067596121857054665,
+        "fitness": 0.954639175257732
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 21.744716999819502,
+        "preparation_ms": 3.1169889989541844,
+        "rmse_m": 0.006759612185705488,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 36,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 2.0770370905276122e-16,
+      "pose_difference_rad": 8.90776704392039e-16,
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 102.7528300000995,
+        "preparation_ms": 3.1103510009415913,
+        "rmse_m": 0.006844798099629663,
+        "fitness": 0.9541237113402062
+      },
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 31.59841900014726,
+        "preparation_ms": 2.3660229999222793,
+        "rmse_m": 0.006844798099629663,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 37,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.8410966031475738e-16,
+      "pose_difference_rad": 1.2440567926383366e-15,
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 30.970293999416754,
+        "preparation_ms": 3.284886999608716,
+        "rmse_m": 0.006847560059756991,
+        "fitness": 0.9541237113402062
+      },
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 89.33316199909314,
+        "preparation_ms": 3.0626739990111673,
+        "rmse_m": 0.006847560059756956,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 38,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 4.3488656054059265e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 17.63286599998537,
+        "preparation_ms": 2.7283809995424235,
+        "rmse_m": 0.006812374105561161,
+        "fitness": 0.9556701030927836
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 7.858365001084167,
+        "preparation_ms": 2.7173899998160778,
+        "rmse_m": 0.006812374105561185,
+        "fitness": 0.9556701030927836
+      }
+    },
+    {
+      "frame": 39,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 6.938893903907228e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 7.336418000704725,
+        "preparation_ms": 3.761207000934519,
+        "rmse_m": 0.006813084915773871,
+        "fitness": 0.9556701030927836
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 17.5459950005461,
+        "preparation_ms": 3.5236499988968717,
+        "rmse_m": 0.006813084915773881,
+        "fitness": 0.9556701030927836
+      }
+    },
+    {
+      "frame": 40,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 3.713442931002523e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 6,
+        "icp_ms": 10.11353299873008,
+        "preparation_ms": 2.543513999626157,
+        "rmse_m": 0.0069321958118938485,
+        "fitness": 0.9577319587628866
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 6,
+        "icp_ms": 3.7233539987937547,
+        "preparation_ms": 2.3980760015547276,
+        "rmse_m": 0.006932195811893852,
+        "fitness": 0.9577319587628866
+      }
+    },
+    {
+      "frame": 41,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.7608938668935867e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.239295998966554,
+        "preparation_ms": 2.8443929986678995,
+        "rmse_m": 0.007008784810877595,
+        "fitness": 0.9597938144329897
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 19.167974000083632,
+        "preparation_ms": 2.98034200022812,
+        "rmse_m": 0.007008784810877595,
+        "fitness": 0.9597938144329897
+      }
+    },
+    {
+      "frame": 42,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 3.1401849173675503e-16,
+      "pose_difference_rad": 2.5626980138831173e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 17.228095999598736,
+        "preparation_ms": 2.336015000764746,
+        "rmse_m": 0.006878692815572172,
+        "fitness": 0.9541237113402062
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.308582000201568,
+        "preparation_ms": 2.27173299936112,
+        "rmse_m": 0.006878692815572147,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 43,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 1.9279638981753172e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 5.829007001011632,
+        "preparation_ms": 2.9888820008636685,
+        "rmse_m": 0.006861064949491078,
+        "fitness": 0.9536082474226805
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 15.528987001744099,
+        "preparation_ms": 2.9260980008984916,
+        "rmse_m": 0.006861064949491077,
+        "fitness": 0.9536082474226805
+      }
+    },
+    {
+      "frame": 44,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.8410966031475738e-16,
+      "pose_difference_rad": 2.020636405220133e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 18.526854999436182,
+        "preparation_ms": 2.2708199994667666,
+        "rmse_m": 0.006770936463996659,
+        "fitness": 0.9551546391752578
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 7.2977640011231415,
+        "preparation_ms": 2.339073998882668,
+        "rmse_m": 0.006770936463996683,
+        "fitness": 0.9551546391752578
+      }
+    },
+    {
+      "frame": 45,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 2.7894008272968645e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.3414670003112406,
+        "preparation_ms": 2.562670000770595,
+        "rmse_m": 0.006770871984451837,
+        "fitness": 0.9551546391752578
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 17.679623000731226,
+        "preparation_ms": 3.0717949994141236,
+        "rmse_m": 0.0067708719844518355,
+        "fitness": 0.9551546391752578
+      }
+    },
+    {
+      "frame": 46,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 2.0770370905276122e-16,
+      "pose_difference_rad": 2.810037859529239e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 12.921710000227904,
+        "preparation_ms": 2.3083939995558467,
+        "rmse_m": 0.0068263914403533,
+        "fitness": 0.9556701030927836
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 5.6420710006932495,
+        "preparation_ms": 2.8573569998116,
+        "rmse_m": 0.006826391440353276,
+        "fitness": 0.9556701030927836
+      }
+    },
+    {
+      "frame": 47,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 1.0385185452638061e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 4.745079999338486,
+        "preparation_ms": 2.968979999423027,
+        "rmse_m": 0.0068709052653498255,
+        "fitness": 0.9567010309278351
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 12.46173200161138,
+        "preparation_ms": 2.8485710008681053,
+        "rmse_m": 0.006870905265349828,
+        "fitness": 0.9567010309278351
+      }
+    },
+    {
+      "frame": 48,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 2.5438405243138006e-16,
+      "pose_difference_rad": 3.1798006553922496e-16,
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 90.17345999927784,
+        "preparation_ms": 2.260279999973136,
+        "rmse_m": 0.006871296925713615,
+        "fitness": 0.9536082474226805
+      },
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 30.852591999064316,
+        "preparation_ms": 3.0783239999436773,
+        "rmse_m": 0.006871296925713681,
+        "fitness": 0.9536082474226805
+      }
+    },
+    {
+      "frame": 49,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 3.828358248229501e-16,
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 33.705926000038744,
+        "preparation_ms": 3.77035400015302,
+        "rmse_m": 0.006873108083658001,
+        "fitness": 0.9536082474226805
+      },
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 89.9909679992561,
+        "preparation_ms": 4.126620000533876,
+        "rmse_m": 0.00687310808365795,
+        "fitness": 0.9536082474226805
+      }
+    },
+    {
+      "frame": 50,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.2536182970186666e-15,
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 90.8933030004846,
+        "preparation_ms": 3.0623510010627797,
+        "rmse_m": 0.006891176764348709,
+        "fitness": 0.9572164948453609
+      },
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 31.34966200013878,
+        "preparation_ms": 2.6595780000207014,
+        "rmse_m": 0.006891176764348736,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 51,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.1102230246251565e-16,
+      "pose_difference_rad": 7.473417450352271e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 5.77090099977795,
+        "preparation_ms": 2.8952600005140994,
+        "rmse_m": 0.006891675263918918,
+        "fitness": 0.9572164948453609
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 16.716167998310993,
+        "preparation_ms": 2.5819130005402258,
+        "rmse_m": 0.0068916752639189135,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 52,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 0.0,
+      "pose_difference_rad": 1.6711069443220838e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 10.756769999716198,
+        "preparation_ms": 3.02491999900667,
+        "rmse_m": 0.006912859114518212,
+        "fitness": 0.9541237113402062
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 4.2424210005265195,
+        "preparation_ms": 2.9090309999446617,
+        "rmse_m": 0.0069128591145182165,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 53,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 2.2420252351056816e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 7.741544999589678,
+        "preparation_ms": 3.357461000632611,
+        "rmse_m": 0.006874757362544164,
+        "fitness": 0.9530927835051547
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 16.586424000706756,
+        "preparation_ms": 3.4289649993297644,
+        "rmse_m": 0.006874757362544192,
+        "fitness": 0.9530927835051546
+      }
+    },
+    {
+      "frame": 54,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 1.1841746461178536e-15,
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 89.13941100036027,
+        "preparation_ms": 2.7276950004306855,
+        "rmse_m": 0.006932776559635923,
+        "fitness": 0.9587628865979382
+      },
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 30.934468000850757,
+        "preparation_ms": 2.553655000156141,
+        "rmse_m": 0.00693277655963592,
+        "fitness": 0.9587628865979382
+      }
+    },
+    {
+      "frame": 55,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 3.298712504264033e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 4.737811001177761,
+        "preparation_ms": 2.686011001060251,
+        "rmse_m": 0.006931368053681797,
+        "fitness": 0.9587628865979382
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 12.584275998960948,
+        "preparation_ms": 2.4668299993209075,
+        "rmse_m": 0.006931368053681799,
+        "fitness": 0.9587628865979382
+      }
+    },
+    {
+      "frame": 56,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 1.8410966031475738e-16,
+      "pose_difference_rad": 2.6910028968576024e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 18.505071999243228,
+        "preparation_ms": 2.307838998603984,
+        "rmse_m": 0.006898933880843324,
+        "fitness": 0.9572164948453609
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 8.69418799993582,
+        "preparation_ms": 2.4761469994700747,
+        "rmse_m": 0.006898933880843324,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 57,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.9229626863835638e-16,
+      "pose_difference_rad": 1.6711069443220838e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 7.290555999134085,
+        "preparation_ms": 2.7077830000052927,
+        "rmse_m": 0.006864947917771238,
+        "fitness": 0.9561855670103093
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 19.925577000321937,
+        "preparation_ms": 2.6943749999190914,
+        "rmse_m": 0.006864947917771212,
+        "fitness": 0.9561855670103093
+      }
+    },
+    {
+      "frame": 58,
+      "scenario": "partial_noisy_warm",
+      "repeat": 0,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 5.405215745588179e-16,
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 96.56243900099071,
+        "preparation_ms": 2.3056200006976724,
+        "rmse_m": 0.006874945734645189,
+        "fitness": 0.9582474226804124
+      },
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 30.913407999832998,
+        "preparation_ms": 3.287218998593744,
+        "rmse_m": 0.006874945734645183,
+        "fitness": 0.9582474226804124
+      }
+    },
+    {
+      "frame": 59,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 0,
+      "pose_difference_m": 1.6653345369377348e-16,
+      "pose_difference_rad": 2.8744111503786724e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 6.898833999002818,
+        "preparation_ms": 3.785545000937418,
+        "rmse_m": 0.006876510861398914,
+        "fitness": 0.9582474226804124
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 21.7324400000507,
+        "preparation_ms": 3.7522440015891334,
+        "rmse_m": 0.006876510861398909,
+        "fitness": 0.9582474226804124
+      }
+    },
+    {
+      "frame": 0,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.2412670766236366e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.4289360007969663,
+        "preparation_ms": 4.420290000780369,
+        "rmse_m": 0.0004112562522732205,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.551884998771129,
+        "preparation_ms": 4.590603999531595,
+        "rmse_m": 0.00041125625227322063,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 1,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 6.206335383118183e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.2769079997669905,
+        "preparation_ms": 4.341993000707589,
+        "rmse_m": 0.00041519025751898667,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.278362999277306,
+        "preparation_ms": 4.559310000331607,
+        "rmse_m": 0.0004151902575189866,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 2,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 5.721958498152797e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.13858999995864,
+        "preparation_ms": 3.7372740007413086,
+        "rmse_m": 0.00041273221834045283,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.2838750000082655,
+        "preparation_ms": 3.3520720007800264,
+        "rmse_m": 0.00041273221834045305,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 3,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.1102230246251565e-16,
+      "pose_difference_rad": 1.5577778178957092e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.396631999450619,
+        "preparation_ms": 3.257336999013205,
+        "rmse_m": 0.0004134361046216882,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.099327999530942,
+        "preparation_ms": 3.30028600001242,
+        "rmse_m": 0.00041343610462168744,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 4,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 1.0198049666328888e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.0750220010086196,
+        "preparation_ms": 3.368198998941807,
+        "rmse_m": 0.0004344424453399942,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.914699000844848,
+        "preparation_ms": 3.5902029994758777,
+        "rmse_m": 0.0004344424453399946,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 5,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 1.2566871346510768e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.927435000965488,
+        "preparation_ms": 3.398127999389544,
+        "rmse_m": 0.0004777600802046208,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 4.047832000651397,
+        "preparation_ms": 3.5823039997922024,
+        "rmse_m": 0.00047776008020462146,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 6,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 0.0,
+      "pose_difference_rad": 1.9478403400799703e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.286355998876388,
+        "preparation_ms": 3.8764509990869556,
+        "rmse_m": 0.0004958349000849144,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.172105000790907,
+        "preparation_ms": 3.581479000786203,
+        "rmse_m": 0.0004958349000849141,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 7,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 2.0770370905276122e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.540592999954242,
+        "preparation_ms": 3.355719998580753,
+        "rmse_m": 0.00047812951015687664,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.1792240004288033,
+        "preparation_ms": 3.403864999199868,
+        "rmse_m": 0.00047812951015687566,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 8,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.8410966031475738e-16,
+      "pose_difference_rad": 1.716587549445839e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.2252090002439218,
+        "preparation_ms": 3.3904560004884843,
+        "rmse_m": 0.00046265968818631157,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.782222000765614,
+        "preparation_ms": 3.721302999110776,
+        "rmse_m": 0.000462659688186312,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 9,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 2.683836431679148e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.646175000947551,
+        "preparation_ms": 3.3263630011788337,
+        "rmse_m": 0.0004533017278739334,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.405173998340615,
+        "preparation_ms": 3.308295999886468,
+        "rmse_m": 0.0004533017278739336,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 10,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 1.2566871346510768e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.113607999490341,
+        "preparation_ms": 3.1880689984973287,
+        "rmse_m": 0.00045250552250295466,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.4717210007074755,
+        "preparation_ms": 3.808331999607617,
+        "rmse_m": 0.0004525055225029546,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 11,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.6653345369377348e-16,
+      "pose_difference_rad": 1.952777839357751e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.8178849996911595,
+        "preparation_ms": 3.734418000021833,
+        "rmse_m": 0.0004653401982940862,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.2721240002283594,
+        "preparation_ms": 4.6682180000061635,
+        "rmse_m": 0.00046534019829408565,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 12,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 0.0,
+      "pose_difference_rad": 2.176645966433816e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.137266999852727,
+        "preparation_ms": 4.392708999148454,
+        "rmse_m": 0.00047200839412505496,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.140986999729648,
+        "preparation_ms": 4.566498999338364,
+        "rmse_m": 0.00047200839412505496,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 13,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 7.473417450352271e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.367215000864235,
+        "preparation_ms": 3.677097000036156,
+        "rmse_m": 0.00046598726354289417,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.2280699995462783,
+        "preparation_ms": 3.271375999247539,
+        "rmse_m": 0.0004659872635428941,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 14,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 1.0927381047259614e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.202548001150717,
+        "preparation_ms": 3.432544001043425,
+        "rmse_m": 0.0004669619076248743,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 7.25739299923589,
+        "preparation_ms": 3.942573001040728,
+        "rmse_m": 0.0004669619076248743,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 15,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 2.0770370905276122e-16,
+      "pose_difference_rad": 1.316562550716263e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.1609639997186605,
+        "preparation_ms": 3.3913949991983827,
+        "rmse_m": 0.0005144812370516846,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.235298999949009,
+        "preparation_ms": 3.561311999874306,
+        "rmse_m": 0.0005144812370516846,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 16,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.6653345369377348e-16,
+      "pose_difference_rad": 6.359601310784502e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.1663759998773457,
+        "preparation_ms": 3.5657579992403043,
+        "rmse_m": 0.0005225859644759333,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.263694998779101,
+        "preparation_ms": 3.6985059996368363,
+        "rmse_m": 0.0005225859644759334,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 17,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.6653345369377348e-16,
+      "pose_difference_rad": 1.962615573354719e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 8.7478170007671,
+        "preparation_ms": 3.4191680006188108,
+        "rmse_m": 0.0005215643890899089,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.260277999084792,
+        "preparation_ms": 4.6838480011501815,
+        "rmse_m": 0.0005215643890899092,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 18,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 3.1031676915590914e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.307377000761335,
+        "preparation_ms": 4.572039000777295,
+        "rmse_m": 0.0005439997458778964,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.33678600024723,
+        "preparation_ms": 4.545652000160771,
+        "rmse_m": 0.0005439997458778965,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 19,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 8.777083671441753e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.7163210005674046,
+        "preparation_ms": 4.480932999285869,
+        "rmse_m": 0.0005299088903578009,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.2861050001665717,
+        "preparation_ms": 3.3653039990895195,
+        "rmse_m": 0.0005299088903578008,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 20,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.5011122659325205e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.1804339994559996,
+        "preparation_ms": 3.4228889999212697,
+        "rmse_m": 0.0004953563436078183,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.296397999904002,
+        "preparation_ms": 3.460097999777645,
+        "rmse_m": 0.0004953563436078171,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 21,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 1.0007415106216806e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.45222300045134,
+        "preparation_ms": 3.4737269998004194,
+        "rmse_m": 0.0004761816169825172,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.1092530005262233,
+        "preparation_ms": 3.479174998574308,
+        "rmse_m": 0.0004761816169825174,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 22,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 6.798699777552591e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.0828149990848033,
+        "preparation_ms": 3.296304001196404,
+        "rmse_m": 0.0004589244328737795,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.804268999781925,
+        "preparation_ms": 3.546997999364976,
+        "rmse_m": 0.0004589244328737796,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 23,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 7.97218214573518e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.978801998935523,
+        "preparation_ms": 4.448822999620461,
+        "rmse_m": 0.00046526273622072065,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.223937999588088,
+        "preparation_ms": 3.128637999907369,
+        "rmse_m": 0.0004652627362207205,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 24,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.3383253895372864e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.1342429990909295,
+        "preparation_ms": 3.159245999995619,
+        "rmse_m": 0.0004488874178871306,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.933904001722112,
+        "preparation_ms": 3.4893360007117735,
+        "rmse_m": 0.00044888741788713036,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 25,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 1.6939998869943826e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.514372998732142,
+        "preparation_ms": 3.3794020000641467,
+        "rmse_m": 0.0004701467981492993,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.264243999889004,
+        "preparation_ms": 3.2413560002169106,
+        "rmse_m": 0.00047014679814929943,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 26,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 8.886119947416683e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.177049000238185,
+        "preparation_ms": 3.2748410012573004,
+        "rmse_m": 0.00048427963774085416,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.788492999272421,
+        "preparation_ms": 3.3926569994946476,
+        "rmse_m": 0.0004842796377408537,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 27,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 1.1610990315520314e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 5.353474998628371,
+        "preparation_ms": 3.199229000529158,
+        "rmse_m": 0.00047360399187902955,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.151770999262226,
+        "preparation_ms": 3.2022699997469317,
+        "rmse_m": 0.00047360399187902993,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 28,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 6.359601310784502e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.102121999996598,
+        "preparation_ms": 3.584719999707886,
+        "rmse_m": 0.00047207650353693793,
+        "fitness": 1.0
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.511042000056477,
+        "preparation_ms": 3.58423999932711,
+        "rmse_m": 0.0004720765035369382,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 29,
+      "scenario": "full_warm",
+      "repeat": 1,
+      "pose_difference_m": 2.220446049250313e-16,
+      "pose_difference_rad": 2.6945789820192466e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 6.609261999983573,
+        "preparation_ms": 3.759903000172926,
+        "rmse_m": 0.00048641221878969684,
+        "fitness": 1.0
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 3,
+        "icp_ms": 2.4382349984080065,
+        "preparation_ms": 3.2295580003847135,
+        "rmse_m": 0.0004864122187896961,
+        "fitness": 1.0
+      }
+    },
+    {
+      "frame": 30,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 5.802176783577771e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 9.378421000292292,
+        "preparation_ms": 2.5266869997722097,
+        "rmse_m": 0.006879376211416933,
+        "fitness": 0.954639175257732
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 18.98399200035783,
+        "preparation_ms": 3.028011000424158,
+        "rmse_m": 0.0068793762114169234,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 31,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 4.972820174300706e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 15.106826000192086,
+        "preparation_ms": 2.4481479995301925,
+        "rmse_m": 0.006879376457142367,
+        "fitness": 0.954639175257732
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.2236820012913086,
+        "preparation_ms": 2.3408529996231664,
+        "rmse_m": 0.00687937645714237,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 32,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 2.3551386880256624e-16,
+      "pose_difference_rad": 5.187026250472392e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 4.119798000829178,
+        "preparation_ms": 2.406779998636921,
+        "rmse_m": 0.006882856069313154,
+        "fitness": 0.9572164948453609
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 10.28114899963839,
+        "preparation_ms": 2.4705190007807687,
+        "rmse_m": 0.00688285606931313,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 33,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 9.813077866773597e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 15.347566000855295,
+        "preparation_ms": 2.3002559992164606,
+        "rmse_m": 0.00688352013787006,
+        "fitness": 0.9572164948453609
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 6.499488999907044,
+        "preparation_ms": 2.410270000837045,
+        "rmse_m": 0.00688352013787008,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 34,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 9.20548301573787e-17,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 14,
+        "icp_ms": 7.659259999854839,
+        "preparation_ms": 2.421376999336644,
+        "rmse_m": 0.0067595920665127025,
+        "fitness": 0.954639175257732
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 14,
+        "icp_ms": 22.323852999761584,
+        "preparation_ms": 2.347806999750901,
+        "rmse_m": 0.0067595920665127025,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 35,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.6653345369377348e-16,
+      "pose_difference_rad": 2.1319462161963362e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 17.717210999762756,
+        "preparation_ms": 2.444678999381722,
+        "rmse_m": 0.006759612185705465,
+        "fitness": 0.954639175257732
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 6.947185000171885,
+        "preparation_ms": 2.427090001219767,
+        "rmse_m": 0.0067596121857054665,
+        "fitness": 0.954639175257732
+      }
+    },
+    {
+      "frame": 36,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 2.0770370905276122e-16,
+      "pose_difference_rad": 8.037144414202594e-16,
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 33.63073699983943,
+        "preparation_ms": 2.4551189999328926,
+        "rmse_m": 0.006844798099629663,
+        "fitness": 0.9541237113402062
+      },
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 87.97616800075048,
+        "preparation_ms": 2.5059359995793784,
+        "rmse_m": 0.006844798099629657,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 37,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 9.599778530722956e-16,
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 87.50188400154002,
+        "preparation_ms": 2.593342998807202,
+        "rmse_m": 0.006847560059756966,
+        "fitness": 0.9541237113402062
+      },
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 33.85032200094429,
+        "preparation_ms": 3.58129599953827,
+        "rmse_m": 0.006847560059756991,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 38,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.5700924586837752e-16,
+      "pose_difference_rad": 2.006288509604071e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 6.772195998564712,
+        "preparation_ms": 3.587085999242845,
+        "rmse_m": 0.006812374105561185,
+        "fitness": 0.9556701030927836
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 18.6428339984559,
+        "preparation_ms": 3.1986940011847764,
+        "rmse_m": 0.006812374105561185,
+        "fitness": 0.9556701030927836
+      }
+    },
+    {
+      "frame": 39,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 9.614813431917819e-17,
+      "pose_difference_rad": 3.242773118236042e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 17.633904000831535,
+        "preparation_ms": 2.407104999292642,
+        "rmse_m": 0.0068130849157738435,
+        "fitness": 0.9556701030927836
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 7.52610299969092,
+        "preparation_ms": 2.528156001062598,
+        "rmse_m": 0.006813084915773871,
+        "fitness": 0.9556701030927836
+      }
+    },
+    {
+      "frame": 40,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 3.5217877337871735e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 6,
+        "icp_ms": 4.793444999450003,
+        "preparation_ms": 2.7191299996047746,
+        "rmse_m": 0.006932195811893852,
+        "fitness": 0.9577319587628866
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 6,
+        "icp_ms": 10.037570998974843,
+        "preparation_ms": 2.661155998794129,
+        "rmse_m": 0.006932195811893875,
+        "fitness": 0.9577319587628866
+      }
+    },
+    {
+      "frame": 41,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 3.5381555418772976e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 16.69667200076219,
+        "preparation_ms": 2.424390999294701,
+        "rmse_m": 0.0070087848108776,
+        "fitness": 0.9597938144329897
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.313931000477169,
+        "preparation_ms": 2.3494160013797227,
+        "rmse_m": 0.007008784810877595,
+        "fitness": 0.9597938144329897
+      }
+    },
+    {
+      "frame": 42,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.7554167342883506e-16,
+      "pose_difference_rad": 1.8253379971363983e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.237044999579666,
+        "preparation_ms": 2.426801000183332,
+        "rmse_m": 0.006878692815572147,
+        "fitness": 0.9541237113402062
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 15.2416170003562,
+        "preparation_ms": 2.4412470011156984,
+        "rmse_m": 0.006878692815572169,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 43,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 4.807406715958909e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 14.357203999679768,
+        "preparation_ms": 2.31549999989511,
+        "rmse_m": 0.006861064949491074,
+        "fitness": 0.9536082474226805
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 5.804422999062808,
+        "preparation_ms": 2.402694999545929,
+        "rmse_m": 0.006861064949491078,
+        "fitness": 0.9536082474226805
+      }
+    },
+    {
+      "frame": 44,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.8410966031475738e-16,
+      "pose_difference_rad": 3.9691443593156936e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 7.269611000083387,
+        "preparation_ms": 2.4456259998260066,
+        "rmse_m": 0.006770936463996683,
+        "fitness": 0.9551546391752578
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 19.778324000071734,
+        "preparation_ms": 2.5177219995384803,
+        "rmse_m": 0.006770936463996653,
+        "fitness": 0.9551546391752578
+      }
+    },
+    {
+      "frame": 45,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 6.206335383118183e-17,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 15.898560999630718,
+        "preparation_ms": 2.637468000102672,
+        "rmse_m": 0.006770871984451837,
+        "fitness": 0.9551546391752578
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.2862750000931555,
+        "preparation_ms": 2.51448199924198,
+        "rmse_m": 0.006770871984451837,
+        "fitness": 0.9551546391752578
+      }
+    },
+    {
+      "frame": 46,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.3597399555105182e-16,
+      "pose_difference_rad": 5.03057844280837e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 5.231733999607968,
+        "preparation_ms": 2.4458370007778285,
+        "rmse_m": 0.006826391440353276,
+        "fitness": 0.9556701030927836
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 13.430598000923055,
+        "preparation_ms": 2.5500689989712555,
+        "rmse_m": 0.0068263914403533035,
+        "fitness": 0.9556701030927836
+      }
+    },
+    {
+      "frame": 47,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 2.1544120232613906e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 10.96693200088339,
+        "preparation_ms": 2.3423669990734197,
+        "rmse_m": 0.00687090526534983,
+        "fitness": 0.9567010309278351
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 4.789438000443624,
+        "preparation_ms": 3.384185998584144,
+        "rmse_m": 0.0068709052653498255,
+        "fitness": 0.9567010309278351
+      }
+    },
+    {
+      "frame": 48,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 3.1401849173675503e-16,
+      "pose_difference_rad": 4.2953939129292556e-16,
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 33.861598998555564,
+        "preparation_ms": 3.4099799995601643,
+        "rmse_m": 0.006871296925713681,
+        "fitness": 0.9536082474226805
+      },
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 89.52070099985576,
+        "preparation_ms": 3.150128999550361,
+        "rmse_m": 0.006871296925713609,
+        "fitness": 0.9536082474226805
+      }
+    },
+    {
+      "frame": 49,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 4.443059973708339e-16,
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 88.5543129988946,
+        "preparation_ms": 2.7697000004991423,
+        "rmse_m": 0.006873108083657953,
+        "fitness": 0.9536082474226805
+      },
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 30.876852999426774,
+        "preparation_ms": 2.497080000466667,
+        "rmse_m": 0.006873108083658001,
+        "fitness": 0.9536082474226805
+      }
+    },
+    {
+      "frame": 50,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.6653345369377348e-16,
+      "pose_difference_rad": 1.140092153936226e-15,
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 30.924017999495845,
+        "preparation_ms": 2.647458999490482,
+        "rmse_m": 0.006891176764348736,
+        "fitness": 0.9572164948453609
+      },
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 94.63392100042256,
+        "preparation_ms": 2.700937000554404,
+        "rmse_m": 0.006891176764348712,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 51,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.3877787807814457e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 15.703363000284298,
+        "preparation_ms": 2.6678829999582376,
+        "rmse_m": 0.006891675263918912,
+        "fitness": 0.9572164948453609
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 10,
+        "icp_ms": 8.313502999953926,
+        "preparation_ms": 2.373485998759861,
+        "rmse_m": 0.006891675263918918,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 52,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 2.0770370905276122e-16,
+      "pose_difference_rad": 3.2368285245694693e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 4.430488999787485,
+        "preparation_ms": 2.778522000880912,
+        "rmse_m": 0.0069128591145182165,
+        "fitness": 0.9541237113402062
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 7,
+        "icp_ms": 11.548807000508532,
+        "preparation_ms": 2.5343360011902405,
+        "rmse_m": 0.006912859114518211,
+        "fitness": 0.9541237113402062
+      }
+    },
+    {
+      "frame": 53,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 2.0396099332657778e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 14.249849000407266,
+        "preparation_ms": 2.5015470000653295,
+        "rmse_m": 0.006874757362544195,
+        "fitness": 0.9530927835051546
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 9,
+        "icp_ms": 5.306183998982306,
+        "preparation_ms": 2.497228000720497,
+        "rmse_m": 0.006874757362544164,
+        "fitness": 0.9530927835051547
+      }
+    },
+    {
+      "frame": 54,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 1.2412670766236366e-16,
+      "pose_difference_rad": 1.5217549622495757e-15,
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 30.87641700039967,
+        "preparation_ms": 2.5105280001298524,
+        "rmse_m": 0.00693277655963592,
+        "fitness": 0.9587628865979382
+      },
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 90.76479699979245,
+        "preparation_ms": 2.6583639992168173,
+        "rmse_m": 0.006932776559635921,
+        "fitness": 0.9587628865979382
+      }
+    },
+    {
+      "frame": 55,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.1102230246251565e-16,
+      "pose_difference_rad": 2.7962967607555853e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 13.179404000766226,
+        "preparation_ms": 2.5821539984463016,
+        "rmse_m": 0.006931368053681794,
+        "fitness": 0.9587628865979382
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 8,
+        "icp_ms": 7.279479999851901,
+        "preparation_ms": 2.4509869999747025,
+        "rmse_m": 0.006931368053681797,
+        "fitness": 0.9587628865979382
+      }
+    },
+    {
+      "frame": 56,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 5.551115123125783e-17,
+      "pose_difference_rad": 2.884444029575346e-16,
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 6.264493000344373,
+        "preparation_ms": 2.4546039985580137,
+        "rmse_m": 0.006898933880843324,
+        "fitness": 0.9572164948453609
+      },
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 11,
+        "icp_ms": 16.973714999039657,
+        "preparation_ms": 2.4515420009265654,
+        "rmse_m": 0.0068989338808433266,
+        "fitness": 0.9572164948453609
+      }
+    },
+    {
+      "frame": 57,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 1.5700924586837752e-16,
+      "pose_difference_rad": 1.693999886994383e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 19.792253000559867,
+        "preparation_ms": 2.5438459997531027,
+        "rmse_m": 0.006864947917771218,
+        "fitness": 0.9561855670103093
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 13,
+        "icp_ms": 7.345243999225204,
+        "preparation_ms": 2.473439999448601,
+        "rmse_m": 0.006864947917771238,
+        "fitness": 0.9561855670103093
+      }
+    },
+    {
+      "frame": 58,
+      "scenario": "partial_noisy_warm",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 8.561594108773095e-16,
+      "cuda": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 31.052977999934228,
+        "preparation_ms": 2.6672889998735627,
+        "rmse_m": 0.006874945734645183,
+        "fitness": 0.9582474226804124
+      },
+      "cuda_legacy": {
+        "accepted": false,
+        "reason": "iteration_limit",
+        "iterations": 60,
+        "icp_ms": 89.04365800117375,
+        "preparation_ms": 3.2191070004046196,
+        "rmse_m": 0.006874945734645186,
+        "fitness": 0.9582474226804124
+      }
+    },
+    {
+      "frame": 59,
+      "scenario": "partial_noisy_centroid",
+      "repeat": 1,
+      "pose_difference_m": 7.850462293418876e-17,
+      "pose_difference_rad": 2.665835984225005e-16,
+      "cuda_legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 20.85768500000995,
+        "preparation_ms": 2.552332000050228,
+        "rmse_m": 0.006876510861398916,
+        "fitness": 0.9582474226804124
+      },
+      "cuda": {
+        "accepted": true,
+        "reason": "accepted",
+        "iterations": 12,
+        "icp_ms": 6.934856000953005,
+        "preparation_ms": 2.6481229997443734,
+        "rmse_m": 0.006876510861398914,
+        "fitness": 0.9582474226804124
+      }
+    }
+  ]
+}

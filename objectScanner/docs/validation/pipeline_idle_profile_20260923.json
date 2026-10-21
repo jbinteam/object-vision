@@ -1,0 +1,46 @@
+{
+  "duration_s": 45.0248729140003,
+  "captured_clouds": 0,
+  "counts": {
+    "clouds": 450,
+    "yolo_segmentation:no_matching_instance": 450,
+    "icp_pose:invalid_cloud_point_count": 450,
+    "object_cloud:insufficient_object_points": 450,
+    "rgbd_camera:camera_streaming": 451
+  },
+  "metrics": {
+    "yolo_segmentation/other/segmentation_ms": {
+      "median": 64.6969250001348,
+      "p95": 131.93654984984278
+    },
+    "yolo_segmentation/other/receipt_to_mask_ms": {
+      "median": 153.337471,
+      "p95": 198.43627594999998
+    },
+    "object_cloud/other/cloud_extraction_ms": {
+      "median": 4.294188499898155,
+      "p95": 9.822924249965578
+    },
+    "object_cloud/other/preprocessing_ms": {
+      "median": 0.028319500415818766,
+      "p95": 0.07574519981972117
+    },
+    "object_cloud/other/cloud_total_ms": {
+      "median": 4.616228500253783,
+      "p95": 10.62128074986503
+    },
+    "object_cloud/other/receipt_to_cloud_ms": {
+      "median": 159.852844,
+      "p95": 205.51152169999995
+    },
+    "rgbd_camera/other/camera_publish_ms": {
+      "median": 3.2601220000287867,
+      "p95": 10.081763500238594
+    },
+    "rgbd_camera/other/receipt_to_publish_ms": {
+      "median": 43.444509,
+      "p95": 80.60306
+    }
+  },
+  "context": "Live Phase 3 before cached ICP optimization; no target detected, so ICP was not exercised."
+}

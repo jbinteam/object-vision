@@ -1,0 +1,60 @@
+{
+  "kind": "recorded_L515_images_current_pinned_models_offline",
+  "images": [
+    "datasets/my_object_20260925_r2/images/1790323285174229542.png",
+    "datasets/my_object_20260925_r2/images/1790323410412842357.png",
+    "datasets/my_object_20260925_r2/images/1790323514875702151.png",
+    "datasets/my_object_20260925_r2/images/1790323609326788630.png"
+  ],
+  "shape": [
+    540,
+    960,
+    3
+  ],
+  "models": {
+    "segmentation": {
+      "cuda:0": {
+        "median_ms": 7.286454999757552,
+        "p95_ms": 8.064706799996202,
+        "detections_per_frame": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "cpu": {
+        "median_ms": 36.327472500033764,
+        "p95_ms": 37.8287188997092,
+        "detections_per_frame": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    "pose": {
+      "cuda:0": {
+        "median_ms": 6.9182775005174335,
+        "p95_ms": 7.0449141001518,
+        "detections_per_frame": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "cpu": {
+        "median_ms": 27.645239000321453,
+        "p95_ms": 28.57444384981136,
+        "detections_per_frame": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  }
+}

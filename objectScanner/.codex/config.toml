@@ -1,0 +1,38 @@
+# Robotics team defaults for new project sessions. Explicit UI/CLI model choices
+# can override the primary model; named roles retain their own model settings.
+model = "gpt-6-astra"
+model_reasoning_effort = "high"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+default_subagent_model = "gpt-6.1-sol"
+default_subagent_reasoning_effort = "high"
+
+[agents.robotics_manager]
+description = "GPT-6 Astra technical manager: architecture, robotics geometry, task decomposition and acceptance. Use when the primary agent is not already filling this role."
+config_file = "agents/robotics_manager.toml"
+
+[agents.coding_lead]
+description = "GPT-6.1 Sol coding lead: implementation design, debugging, file ownership, integration and targeted validation."
+config_file = "agents/coding_lead.toml"
+
+[agents.robotics_engineer]
+description = "GPT-6.1 Sol implementation specialist for a bounded ROS2, perception, calibration, training or UI task with explicit file ownership."
+config_file = "agents/robotics_engineer.toml"
+
+[agents.robotics_reviewer]
+description = "GPT-6 Astra independent reviewer: coordinate frames, numerical correctness, tracking state, regressions and evidence for acceptance."
+config_file = "agents/robotics_reviewer.toml"
+
+[agents.robotics_researcher]
+description = "GPT-6.1 Sol research specialist: search original papers and official hardware/SDK documents, verify versions and citations, and send actionable findings to coding_lead and robotics_engineer."
+config_file = "agents/robotics_researcher.toml"
+
+[agents.kinematics_control]
+description = "GPT-6 Astra kinematics and control specialist: robot kinematics/dynamics, Jacobians, trajectories, controller design and numerical validation; sends equations and test cases to coding_lead and robotics_engineer."
+config_file = "agents/kinematics_control.toml"
+
+[agents.robotics_assistant]
+description = "GPT-6 Luna assistant with medium reasoning: routine log/test triage, documentation drafts, cited specification extraction and boilerplate; sends output to the Sol coding lead for review."
+config_file = "agents/robotics_assistant.toml"

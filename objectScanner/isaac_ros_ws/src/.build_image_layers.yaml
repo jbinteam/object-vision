@@ -1,0 +1,10 @@
+image_key_order:
+  - isaac_ros.noble.ros2_jazzy.realsense.gr00t_workflow.ur_manipulation.mega_manipulation.nova_carter
+context_overrides:
+  isaac_ros: isaac-ros-cli
+  noble: isaac-ros-cli
+cache_to_registry_names: []
+cache_from_registry_names:
+  - nvcr.io/nvidia/isaac/ros
+remote_builder: {}
+

@@ -1,0 +1,11 @@
+Package: tensorrt
+Version: 10.13.3.9-1+cuda13.0
+Architecture: amd64
+Maintainer: objectScanner local runtime image
+Depends: libnvinfer10 (= 10.13.3.9-1+cuda13.0), libnvinfer-bin (= 10.13.3.9-1+cuda13.0), libnvinfer-dispatch10 (= 10.13.3.9-1+cuda13.0), libnvinfer-lean10 (= 10.13.3.9-1+cuda13.0), libnvinfer-plugin10 (= 10.13.3.9-1+cuda13.0), libnvinfer-vc-plugin10 (= 10.13.3.9-1+cuda13.0), libnvonnxparsers10 (= 10.13.3.9-1+cuda13.0)
+Section: libs
+Priority: optional
+Description: Runtime-only TensorRT metapackage for Isaac ROS FoundationPose
+ This local metapackage satisfies Isaac ROS's TensorRT dependency while
+ deliberately omitting development headers, static libraries, samples, and
+ Windows engine-builder resources that are not needed to run FoundationPose.

@@ -1,0 +1,17 @@
+{
+  "duration_s": 15.002334890999919,
+  "counts": {
+    "observed_cloud": 151,
+    "nonempty_observed": 0
+  },
+  "states": {
+    "invalid_cloud_point_count": 150
+  },
+  "pose_samples": [],
+  "metrics": {
+    "points": {
+      "median": 0.0,
+      "p95": 0.0
+    }
+  }
+}

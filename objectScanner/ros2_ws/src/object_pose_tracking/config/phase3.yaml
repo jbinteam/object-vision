@@ -1,0 +1,7 @@
+# Overrides phase2.yaml; all registration thresholds and reference settings remain.
+icp_pose:
+  ros__parameters:
+    tracking_enabled: true
+    # Measured from the last ACCEPTED measurement, including processing latency.
+    # Rejected observations do not extend this lifetime or replace the seed.
+    tracking_seed_timeout: 0.75

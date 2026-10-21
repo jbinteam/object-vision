@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crop scanned point clouds and define object coordinate frames for ICP reference models.">
+  <title>Object Scanner · Reference Studio</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brandmark">⊞</span><div>OBJECT SCANNER<span class="brand-sub">REFERENCE STUDIO</span></div></div>
+    <div class="project"><span class="status-dot"></span><span id="source-title">No scan loaded</span><span class="badge">LOCAL</span></div>
+    <button id="open-file" class="button secondary">↥ Open PLY</button>
+  </header>
+  <main class="workspace">
+    <section class="view-area" aria-label="3D point cloud workspace">
+      <div class="view-toolbar">
+        <div class="segmented" id="view-modes"><button data-view="scan" class="active">Scan frame</button><button data-view="object">Object frame</button></div>
+        <div class="view-actions"><button id="fit-view" title="Fit cloud in view">Fit</button><button data-camera="front">Front</button><button data-camera="top">Top</button><button data-camera="side">Side</button></div>
+      </div>
+      <div id="viewport">
+        <div id="empty-state"><span class="empty-symbol">⊞</span><h1>Give your object a frame.</h1><p>Open a scan, trim the surroundings, and prepare a reference for registration.</p><button id="empty-open" class="button primary">Open a PLY file</button><span class="muted">or choose a saved scan in the panel →</span></div>
+        <div class="viewport-tag" id="viewport-tag" hidden><span class="status-dot"></span><span id="frame-label">scan_frame</span><span class="axes-key"><b class="x">X</b><b class="y">Y</b><b class="z">Z</b></span></div>
+        <div id="pick-banner" hidden><span id="pick-instruction"></span><button id="cancel-pick">Cancel</button></div>
+        <div class="view-legend" id="view-legend" hidden><span><i class="swatch kept"></i>Kept points</span><span><i class="swatch excluded"></i>Outside crop</span><span><i class="swatch crop"></i>Crop box</span></div>
+      </div>
+      <div class="view-bottom"><span id="view-help">Drag to orbit · Right-drag to pan · Scroll to zoom</span><label>Point size <input id="point-size" type="range" min="1" max="5" step="0.5" value="2" aria-label="Point size"></label></div>
+      <footer class="stats"><div><span>SOURCE</span><strong id="total-count">—</strong></div><div><span>IN CROP</span><strong id="crop-count">—</strong></div><div><span>EXTENT · m</span><strong id="extent">—</strong></div><div><span>PREVIEW</span><strong id="preview-count">—</strong></div></footer>
+    </section>
+    <aside class="inspector">
+      <section class="source-panel">
+        <div class="section-title"><h2>Source cloud</h2><button id="refresh-scans" class="text-button">Refresh</button></div>
+        <label for="saved-scan">Saved scans</label><div class="input-row"><select id="saved-scan"><option value="">Choose from output/…</option></select><button id="load-scan" class="button compact">Open</button></div>
+        <div class="units-row"><label for="source-units">File units</label><select id="source-units"><option value="m">Metres · scanner default</option><option value="mm">Millimetres</option></select></div>
+      </section>
+      <nav class="step-tabs" aria-label="Reference preparation steps"><button data-tab="crop" class="active"><span>01</span> Crop</button><button data-tab="frame"><span>02</span> Frame</button><button data-tab="export"><span>03</span> Export</button></nav>
+      <div class="panels">
+        <section id="panel-crop" class="panel">
+          <div class="section-title"><h2>Keep the object</h2><button id="reset-crop" class="text-button" disabled>Reset</button></div>
+          <p class="hint">Set a box around the object. Points outside the box are excluded from the reference.</p>
+          <fieldset id="crop-controls" disabled>
+            <div class="segmented" role="group" aria-label="Crop box drag tool">
+              <button data-crop-tool="rotate" aria-pressed="false">↻ Rotate box</button>
+              <button data-crop-tool="off" class="active" aria-pressed="true">Off</button>
+            </div>
+            <p class="micro">Select Rotate box, then drag a colored ring around the box center. Drag elsewhere to orbit. Esc cancels a drag.</p>
+            <div id="crop-axes"></div>
+            <div class="section-title small"><h3>Box rotation · degrees</h3><button id="reset-crop-rotation" class="text-button">Zero rotation</button></div>
+            <div class="triple" id="crop-rotation-inputs"></div>
+            <div class="section-title small"><h3>Crop center · scan metres</h3><button id="center-crop" class="text-button">Center crop on object</button></div>
+            <div class="triple" id="crop-center-inputs"></div>
+            <label class="check"><input id="show-outside" type="checkbox" checked> Show excluded points</label>
+          </fieldset>
+          <div class="note"><span>↳</span><p>Min/max move the faces along the box’s own X/Y/Z axes, in metres, including after rotation. The opposite face stays fixed. Rotation turns the box around its center. Export uses the full cloud.</p></div>
+          <button data-next="frame" class="button primary full requires-cloud" disabled>Define object frame <span>→</span></button>
+        </section>
+        <section id="panel-frame" class="panel" hidden>
+          <div class="section-title"><h2>Assign obj_frame</h2><button id="reset-frame" class="text-button" disabled>Reset</button></div>
+          <p class="hint">Place the origin, then align the axes to the object. The frame is right-handed.</p>
+          <fieldset id="frame-controls" disabled>
+            <div class="segmented" role="group" aria-label="Reference frame drag tool">
+              <button data-frame-tool="translate" class="active" aria-pressed="true">↔ Move</button>
+              <button data-frame-tool="rotate" aria-pressed="false">↻ Rotate</button>
+              <button data-frame-tool="off" aria-pressed="false">Off</button>
+            </div>
+            <p id="frame-drag-hint" class="micro">Move: drag an arrow along its axis, a square within a plane, or the center freely. Rotate: drag a ring. Esc cancels a drag.</p>
+            <button id="pick-frame" class="button secondary full">⌖ Pick origin, +X, +Y</button>
+            <div class="or-divider">or enter the frame numerically</div>
+            <div class="section-title small"><h3>Origin · m</h3><button id="center-frame" class="text-button">Move frame to crop center</button></div>
+            <div class="triple" id="origin-inputs"></div>
+            <h3>Rotation · degrees</h3><div class="triple" id="rotation-inputs"></div>
+            <p class="micro">Roll X, pitch Y, yaw Z. Rotation order: Rz · Ry · Rx.</p>
+          </fieldset>
+          <div class="frame-card"><div><span class="status-dot"></span>obj_frame <span class="badge">METRES</span></div><p id="frame-summary">Origin at scan origin</p><pre id="matrix-preview">1  0  0  0
+0  1  0  0
+0  0  1  0
+0  0  0  1</pre><span class="micro">T_scan_obj · maps object → scan</span></div>
+          <button data-next="export" class="button primary full requires-cloud" disabled>Prepare reference <span>→</span></button>
+        </section>
+        <section id="panel-export" class="panel" hidden>
+          <h2>Ready for registration</h2><p class="hint">Save the cropped cloud in obj_frame with its transform and preparation settings.</p>
+          <fieldset id="export-controls" disabled>
+            <label for="reference-name">Reference name</label><input id="reference-name" value="my_object" maxlength="64" pattern="[A-Za-z0-9][A-Za-z0-9_-]*" autocomplete="off">
+            <label for="export-voxel">Voxel size · mm <span class="muted">0 keeps every point</span></label><input id="export-voxel" type="number" min="0" max="1000" step="0.5" value="0">
+            <label class="check"><input id="export-normals" type="checkbox" checked> Re-estimate normals for ICP</label>
+            <div class="export-list"><div><span>◇</span><div><strong>reference.ply</strong><small>Colored cloud in object coordinates</small></div></div><div><span>⌘</span><div><strong>frame.json</strong><small>Both transforms + crop settings</small></div></div><div><span>↗</span><div><strong>reference_bundle.zip</strong><small>PLY, frame and ICP usage notes</small></div></div></div>
+            <button id="export-reference" class="button primary full">Export reference <span>↗</span></button>
+          </fieldset>
+          <div id="export-result" hidden></div>
+          <p class="micro">ICP still needs an initial pose. Reference coordinates and live scene coordinates must use matching units.</p>
+        </section>
+      </div>
+      <div class="inspector-footer">SOURCE SCAN → CROP → OBJECT FRAME</div>
+    </aside>
+  </main>
+  <div id="notice" role="status" aria-live="polite" hidden></div>
+  <div id="busy" hidden><span class="spinner"></span><span id="busy-label">Opening scan…</span></div>
+  <input id="file-input" type="file" accept=".ply" hidden>
+  <script type="module" src="/assets/app.js?v=3"></script>
+</body>
+</html>

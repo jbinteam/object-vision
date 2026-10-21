@@ -1,0 +1,81 @@
+{
+  "duration_s": 15.039775470000222,
+  "counts": {
+    "color": 151,
+    "depth": 151,
+    "mask": 151,
+    "cloud": 150,
+    "valid_cloud": 0
+  },
+  "cloud_hz": 9.973553149061592,
+  "valid_cloud_hz": 0.0,
+  "states": {
+    "object_cloud:no_recent_synchronized_input": 11,
+    "yolo_segmentation:segmentation_ready": 1,
+    "yolo_segmentation:no_recent_color": 5,
+    "rgbd_camera:camera_streaming": 151,
+    "yolo_segmentation:no_matching_instance": 150,
+    "object_cloud:insufficient_object_points": 150
+  },
+  "sample_clouds": [],
+  "matched_mask_depth_stamps": 151,
+  "matched_cloud_depth_stamps": 150,
+  "metrics": {
+    "rgbd_camera/camera_publish_ms": {
+      "median": 3.3930429999600165,
+      "p95": 12.835173499979646
+    },
+    "rgbd_camera/receipt_to_publish_ms": {
+      "median": 48.563292000000004,
+      "p95": 86.098757
+    },
+    "rgbd_camera/width": {
+      "median": 960.0,
+      "p95": 960.0
+    },
+    "rgbd_camera/height": {
+      "median": 540.0,
+      "p95": 540.0
+    },
+    "yolo_segmentation/segmentation_ms": {
+      "median": 61.34011850008392,
+      "p95": 147.57063470003683
+    },
+    "yolo_segmentation/receipt_to_mask_ms": {
+      "median": 169.95579800000002,
+      "p95": 218.4480431
+    },
+    "yolo_segmentation/mask_pixels": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "yolo_segmentation/detections": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "object_cloud/input_points": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "object_cloud/points": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "object_cloud/cloud_extraction_ms": {
+      "median": 3.2107135000387643,
+      "p95": 8.366348449840187
+    },
+    "object_cloud/preprocessing_ms": {
+      "median": 0.025747499876160873,
+      "p95": 0.06794204996367623
+    },
+    "object_cloud/cloud_total_ms": {
+      "median": 3.542482499824473,
+      "p95": 9.040522400027836
+    },
+    "object_cloud/receipt_to_cloud_ms": {
+      "median": 174.334139,
+      "p95": 224.74550305
+    }
+  }
+}

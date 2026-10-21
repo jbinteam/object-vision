@@ -1,0 +1,22 @@
+[
+  [
+    "eval",
+    "(()=>{document.querySelector('#dataset .step[data-step=\"5\"]').click();document.querySelector('#dataset').scrollIntoView();return 'selected final dataset step';})()"
+  ],
+  [
+    "wait",
+    200
+  ],
+  [
+    "eval",
+    "document.querySelector('#tour').click()"
+  ],
+  [
+    "wait",
+    250
+  ],
+  [
+    "eval",
+    "(()=>{const p=document.querySelector('#pose');if(p.querySelector('.iso-stage').getAttribute('aria-valuenow')!=='1')throw Error('cross-stream activation');if(p.getBoundingClientRect().top< -20||p.getBoundingClientRect().top>innerHeight)throw Error('destination not revealed');return 'tour boundary activates and reveals runtime stream';})()"
+  ]
+]

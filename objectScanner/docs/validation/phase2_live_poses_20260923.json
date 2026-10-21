@@ -1,0 +1,126 @@
+{
+  "duration_s": 20.03975584300042,
+  "counts": {
+    "poses": 46,
+    "axes_add": 46,
+    "axes_delete": 12
+  },
+  "accepted_pose_hz": 2.295437148056227,
+  "states": {
+    "icp_ready": 1,
+    "no_recent_object_cloud": 24,
+    "invalid_cloud_point_count": 80,
+    "icp_rejected:insufficient_correspondences": 3,
+    "icp_accepted": 46,
+    "icp_rejected:iteration_limit": 13,
+    "icp_rejected:time_budget_exceeded": 4
+  },
+  "pose_samples": [
+    {
+      "frame": "camera_color_optical_frame",
+      "stamp_sec": 1790153011,
+      "stamp_nanosec": 554618240,
+      "xyz": [
+        -0.014837418353035417,
+        0.02975578463979297,
+        0.5406464259316757
+      ],
+      "quaternion_xyzw": [
+        0.8974374958229359,
+        0.43821521043477885,
+        -0.011121100851993058,
+        0.04949435877451327
+      ]
+    },
+    {
+      "frame": "camera_color_optical_frame",
+      "stamp_sec": 1790153011,
+      "stamp_nanosec": 677233105,
+      "xyz": [
+        -0.008229598922318811,
+        0.01701683839645003,
+        0.5402097180615351
+      ],
+      "quaternion_xyzw": [
+        0.9036058545401053,
+        0.4150107722393791,
+        -0.0313079168326933,
+        0.1014018387886391
+      ]
+    }
+  ],
+  "metrics": {
+    "unaccepted/reference_points": {
+      "median": 1940.0,
+      "p95": 1940.0
+    },
+    "unaccepted/points": {
+      "median": 0.0,
+      "p95": 0.0
+    },
+    "unaccepted/fitness": {
+      "median": 0.9997422680412371,
+      "p95": 1.0
+    },
+    "unaccepted/rmse_m": {
+      "median": 0.00563294500827031,
+      "p95": 0.010690316564928753
+    },
+    "unaccepted/correspondence_ratio": {
+      "median": 0.9997422680412371,
+      "p95": 1.0
+    },
+    "unaccepted/correspondences": {
+      "median": 1939.5,
+      "p95": 1940.0
+    },
+    "unaccepted/iterations": {
+      "median": 60.0,
+      "p95": 60.0
+    },
+    "unaccepted/preparation_ms": {
+      "median": 5.462835500111396,
+      "p95": 8.797989750064524
+    },
+    "unaccepted/icp_ms": {
+      "median": 216.58333449931888,
+      "p95": 245.1991890502086
+    },
+    "accepted/fitness": {
+      "median": 1.0,
+      "p95": 1.0
+    },
+    "accepted/rmse_m": {
+      "median": 0.005497262298824943,
+      "p95": 0.009339412052641273
+    },
+    "accepted/correspondence_ratio": {
+      "median": 1.0,
+      "p95": 1.0
+    },
+    "accepted/correspondences": {
+      "median": 1940.0,
+      "p95": 1940.0
+    },
+    "accepted/iterations": {
+      "median": 17.5,
+      "p95": 36.75
+    },
+    "accepted/preparation_ms": {
+      "median": 5.481913999574317,
+      "p95": 11.087471499649837
+    },
+    "accepted/icp_ms": {
+      "median": 70.32507600024474,
+      "p95": 150.19086175016128
+    },
+    "accepted/pose_total_ms": {
+      "median": 76.99603849960113,
+      "p95": 156.74278775054518
+    },
+    "accepted/receipt_to_pose_ms": {
+      "median": 257.89978900000006,
+      "p95": 370.59682175
+    }
+  }
+}

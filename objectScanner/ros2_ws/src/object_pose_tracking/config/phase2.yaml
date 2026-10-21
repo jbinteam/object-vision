@@ -1,0 +1,31 @@
+icp_pose:
+  ros__parameters:
+    reliable_transport: true
+    tracking_enabled: false
+    tracking_seed_timeout: 0.75
+    camera_frame: camera_color_optical_frame
+    object_frame: object
+    voxel_size: 0.003
+    minimum_points: 30
+    maximum_observed_points: 120000
+    icp_type: point_to_plane
+    # Reuse native target search/correspondences per fit; open3d selects legacy loop.
+    icp_backend: cached
+    icp_max_iterations: 60
+    icp_max_correspondence_distance: 0.025
+    icp_transformation_epsilon: 0.00001
+    icp_rotation_epsilon: 0.0001
+    icp_time_budget: 0.25
+    normal_radius: 0.015
+    normal_max_neighbors: 30
+    fitness_threshold: 0.35
+    rmse_threshold: 0.012
+    minimum_correspondences: 30
+    # Uses only rotation from adjacent frame.json; recomputes live translation.
+    # For another viewpoint/reference choose identity or manual and set the angles.
+    initial_rotation_mode: reference_metadata
+    initial_rotation_deg: [0.0, 0.0, 0.0]
+    maximum_data_age: 0.75
+    axis_length: 0.06
+    visualization_lifetime: 0.5
+    reference_publish_rate: 10.0

@@ -1,0 +1,2 @@
+# Gemini 305: Python wrapper 2.1.2 embeds Orbbec SDK v2.9.3. Import: pyorbbecsdk
+pyorbbecsdk2==2.1.2

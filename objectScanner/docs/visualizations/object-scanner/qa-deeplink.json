@@ -1,0 +1,23 @@
+[
+  [
+    "wait",
+    500
+  ],
+  [
+    "eval",
+    "(() => { const p=document.querySelector('.lesson:not([hidden])');if(p.id!=='pose-04')throw Error('initial fragment');if(document.querySelector('#pose .iso-stage').getAttribute('aria-valuenow')!=='4')throw Error('initial overview');if(document.querySelector('#tour').getAttribute('aria-pressed')!=='false')throw Error('tour not stopped');return 'direct lesson URL: passed';})()"
+  ],
+  [
+    "key",
+    "Enter",
+    "[data-deep-id=\"pose-05\"]"
+  ],
+  [
+    "wait",
+    100
+  ],
+  [
+    "eval",
+    "(() => {if(document.querySelector('.lesson:not([hidden])').id!=='pose-05')throw Error('keyboard activation');return 'keyboard lesson activation: passed';})()"
+  ]
+]

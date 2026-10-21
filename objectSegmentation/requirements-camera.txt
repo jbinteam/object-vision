@@ -1,0 +1,4 @@
+# L515 support: use Python 3.10 or 3.11, separate from the model environment.
+pyrealsense2==2.54.2.5684
+opencv-python==4.11.0.86
+numpy==1.26.4

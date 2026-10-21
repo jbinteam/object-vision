@@ -1,0 +1,12 @@
+{
+  "source_checkpoint": "runs/segment/emergency_stop_backgrounds/weights/best.pt",
+  "freeze": 11,
+  "optimizer": "AdamW",
+  "lr0": 0.0001,
+  "warmup_bias_lr": 0.0,
+  "frozen_parameters": 1365472,
+  "trainable_parameters": 1477315,
+  "initial_frozen_state_sha256": "40334d3b9f0aa3d50d77296e4738fcc2b6a4bbc220977fd1fef89d1acc1a90d3",
+  "frozen_state_unchanged": true,
+  "final_frozen_state_sha256": "40334d3b9f0aa3d50d77296e4738fcc2b6a4bbc220977fd1fef89d1acc1a90d3"
+}

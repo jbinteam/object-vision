@@ -1,0 +1,29 @@
+{
+  "input": "output/cuda_benchmark_rgb.npy",
+  "shape": [
+    540,
+    960,
+    3
+  ],
+  "iterations": 20,
+  "torch": "2.11.0+cu128",
+  "cuda": "12.8",
+  "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "cuda_half": false,
+  "detections": {
+    "cpu": 0,
+    "cuda:0": 0
+  },
+  "cpu_mask_best_cuda_ious": [],
+  "note": "One input image measures timing and mask agreement, not dataset accuracy.",
+  "inference_ms": {
+    "cpu": {
+      "median": 49.26464800064423,
+      "p95": 52.2170705001372
+    },
+    "cuda:0": {
+      "median": 8.101575500404579,
+      "p95": 10.088821599674702
+    }
+  }
+}

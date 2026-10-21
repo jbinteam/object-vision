@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "calibration_revision": 2,
+  "sha256": {
+    "calibration.json": "36f1456f6180de32d8520b04f400ed4483a7a6aa77eb7478d9739dd7575b02f5",
+    "object_keypoints.yaml": "25f5f82db03d08257c87eb2ade7b298a00b638204a958faa64e0b4aa89840e86"
+  }
+}

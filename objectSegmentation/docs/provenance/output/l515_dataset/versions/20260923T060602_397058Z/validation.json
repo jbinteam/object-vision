@@ -1,0 +1,21 @@
+{
+  "records": 130,
+  "labeled": 130,
+  "split_counts": {
+    "train": 79,
+    "excluded": 1,
+    "val": 50
+  },
+  "added_or_retried": 1,
+  "polygon_mask_iou_min": 0.9950305625248229,
+  "polygon_mask_iou_mean": 0.996433095078801,
+  "review_required": [
+    {
+      "key": "20260923T045549_326628Z_924e6242/frame_000041_20260923T045728_559446Z.png",
+      "flags": [
+        "additional emergency-stop candidate outside primary mask"
+      ]
+    }
+  ],
+  "checks": "source checksum, binary masks, cutout alpha, normalized polygons, polygon-mask IoU >= .98, session separation, exact pixel deduplication"
+}

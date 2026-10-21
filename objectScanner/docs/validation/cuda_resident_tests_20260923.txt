@@ -1,0 +1,12 @@
+........................................................................ [ 78%]
+....................                                                     [100%]
+=============================== warnings summary ===============================
+test/test_registration.py: 14 warnings
+  Warning: `torch.jit.script_method` is deprecated. Please switch to `torch.compile` or `torch.export`.
+
+test/test_registration.py::test_invalid_no_correspondences_and_limits[point_to_plane-cuda]
+test/test_registration.py::test_underconstrained_plane_is_rejected[cuda]
+  Warning: `torch._prims_common.check` is deprecated and will be removed in the future. Please use `torch._check*` functions instead.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+92 passed, 16 warnings in 15.89s
