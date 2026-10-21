@@ -4,6 +4,10 @@ Prepared 2026-10-21 (Asia/Bangkok). Start here, then read each project's guide.
 This is the handover of the current research implementation. Hardware acceptance
 and model generalization remain unfinished; their acceptance work is listed below.
 
+For the step-by-step onboarding walkthrough, start with the repository's
+[project handover and hands-on guide](../docs/HANDOVER.md). This document retains
+the detailed two-project transfer inventory and original workstation snapshot.
+
 ## Read in this order
 
 1. [objectScanner junior guide](docs/JUNIOR_HANDOVER.md): RGB-D collection,

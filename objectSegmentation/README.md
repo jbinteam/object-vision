@@ -1,7 +1,8 @@
 # BiRefNet background removal
 
-Taking over this project? Start with the [junior handover guide](docs/JUNIOR_HANDOVER.md)
-and [two-project handover](../objectScanner/PROJECT_HANDOVER.md) for setup,
+Taking over this project? Start with the [hands-on handover](../docs/HANDOVER.md),
+then the [junior handover guide](docs/JUNIOR_HANDOVER.md) and
+[two-project transfer inventory](../objectScanner/PROJECT_HANDOVER.md) for setup,
 dataset/model provenance and the connection to objectScanner.
 
 For copyable commands, workflow examples, and all project CLI options, see the

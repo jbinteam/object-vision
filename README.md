@@ -2,13 +2,17 @@
 
 Two related robotics vision projects, preserved together for engineering handover:
 
+**Start with the [project handover and hands-on guide](docs/HANDOVER.md).**
+It follows the myCobot280pi handover format: setup, a first-day exercise without
+hardware, expected results, troubleshooting, and an ordered acceptance backlog.
+
 | Project | Purpose | Start here |
 | --- | --- | --- |
 | [objectScanner](objectScanner/) | Calibrated RGB-D datasets, reference clouds and YOLO/PnP/GICP object pose tracking | [Junior guide](objectScanner/docs/JUNIOR_HANDOVER.md) |
 | [objectSegmentation](objectSegmentation/) | L515 RGB capture, BiRefNet draft labels and YOLO segmentation training | [Junior guide](objectSegmentation/docs/JUNIOR_HANDOVER.md) |
 
-Read the [combined handover](objectScanner/PROJECT_HANDOVER.md) for architecture,
-known limitations and a suggested first week. Keep the projects as siblings:
+Use the [combined transfer inventory](objectScanner/PROJECT_HANDOVER.md) for
+artifact ownership and backup details. Keep the projects as siblings:
 scanner mask generation/training uses the segmentation environment and assets.
 
 ## Clone and set up

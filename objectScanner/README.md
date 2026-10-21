@@ -1,8 +1,9 @@
 # RGB-D Object Scanner (Orbbec Gemini 305)
 
-Taking over this project? Start with the [two-project handover](PROJECT_HANDOVER.md)
-and [scanner junior guide](docs/JUNIOR_HANDOVER.md). They identify the verified
-artifact bundle, setup steps and remaining acceptance work.
+Taking over this project? Start with the [hands-on handover](../docs/HANDOVER.md),
+then the [two-project transfer inventory](PROJECT_HANDOVER.md) and
+[scanner junior guide](docs/JUNIOR_HANDOVER.md). They identify the verified artifact
+bundle, setup steps and remaining acceptance work.
 
 For RGB image to object-center pose dataset capture with a tagged turntable,
 see [the turntable dataset guide](docs/TURNTABLE_POSE_DATASET.md).
